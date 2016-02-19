@@ -29,12 +29,12 @@ app.post('/bulletin', function(req, res){
 
 app.post('/signup', function(req,res){
   db.users.insert(req.body, function(err, doc){
-    res.redirect('/login')
-  })
-})
+    res.redirect('/login');
+  });
+});
 
 // TODO: Setup login requests.
 // app.get('/login')
 
-app.listen(8000);
+app.listen(process.env.PORT || 8000);
 console.log('server running on port 8000');
