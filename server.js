@@ -7,6 +7,9 @@ var app = express();
 // configure our server with all the middleware and and routing
 require('./config/middleware.js')(app, express);
 
+// Serve static index.html from server.
+app.use(express.static(__dirname+'/'));
+
 app.get('/bulletin', function(req,res){
   // TODO: Query for latitude and logitude.
   db.appointments.find({}, function(err, doc){
