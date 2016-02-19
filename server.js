@@ -5,7 +5,7 @@ var db     = mongojs('brewfortwo', ['users', 'appointments']);
 var app = express();
 
 // configure our server with all the middleware and and routing
-require('./config/middleware.js')(app, express);
+// require('./config/middleware.js')(app, express);
 
 // Serve static index.html from server.
 app.use(express.static(__dirname+'/'));
