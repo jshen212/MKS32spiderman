@@ -1,5 +1,6 @@
 var app = angular.module('app', [
    'mapsApp',
+   'signup',
    'ui.router'
   ]);
 
@@ -18,5 +19,10 @@ app.config(['$urlRouterProvider', '$stateProvider', function($urlRouterProvider,
     .state('signin', {
       url: '/signin',
       templateUrl: 'templates/signin.html'
+    })
+    .state('signup', {
+      url: '/signup',
+      templateUrl: 'templates/signup.html',
+      controller: 'submitCtrl'
     })
 }])
