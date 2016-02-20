@@ -1,7 +1,7 @@
 var express     = require('express');
 var mongojs     = require('mongojs');
 var bodyParser     = require('body-parser');
-var db     = mongojs('brewfortwo', ['users', 'appointments']);
+var db     = mongojs('brewfortwo', ['users']);
 var app = express();
 
 // configure our server with all the middleware and and routing
@@ -9,6 +9,7 @@ var app = express();
 
 // Serve static index.html from server.
 app.use(express.static(__dirname+'/'));
+app.use(bodyParser.json());
 
 app.get('/bulletin', function(req,res){
   // TODO: Query for latitude and logitude.
@@ -28,10 +29,16 @@ app.post('/bulletin', function(req, res){
 // app.put('/bulletin')
 
 app.post('/signup', function(req,res){
+  // console.log('DATABASE', db);
   db.users.insert(req.body, function(err, doc){
-    res.redirect('/login');
+    if(err){
+      console.log(err);
+    }
+    // res.redirect('/login');
   });
 });
+
+
 
 // TODO: Setup login requests.
 // app.get('/login')
