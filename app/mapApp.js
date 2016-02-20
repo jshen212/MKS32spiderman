@@ -1,11 +1,14 @@
 angular.module('mapsApp', [])
 .controller('MapCtrl', function ($scope, MapHelpers) {
-  MapHelpers.initMap();
+  MapHelpers.initMap()
+  $scope.coffeeShops = MapHelpers.coffeeShops;
+  console.log('!!Line 5', $scope.coffeeShops);
 })
 .factory('MapHelpers', function(){
 
   var map;
   var infowindow;
+  var coffeeShops = [];
 
   function initMap(lat, lng) {
     lat = lat || 34.0219;
@@ -15,7 +18,7 @@ angular.module('mapsApp', [])
 
     map = new google.maps.Map(document.getElementById('map'), {
       center: santaMonica,
-      zoom: 15
+      zoom: 14
     });
 
     getUserCurrentLocation(map);
@@ -35,11 +38,13 @@ angular.module('mapsApp', [])
       for (var i = 0; i < results.length; i++) {
         createMarker(results[i]);
       }
+      coffeeShops = results;
+      console.log('++line42', coffeeShops);
     }
   }
 
   function createMarker(place) {
-    console.log(place);
+
     var placeLoc = place.geometry.location;
     var marker = new google.maps.Marker({
       map: map,
@@ -50,6 +55,9 @@ angular.module('mapsApp', [])
       infowindow.setContent(place.name);
       infowindow.open(map, this);
     });
+
+    // coffeeShops.push(place);
+    // console.log('++line 58', coffeeShops);
   }
 
 
@@ -93,10 +101,26 @@ angular.module('mapsApp', [])
       // console.log(userCurrentLocation);
   }
 
+  function centerMapOnWindowResize () {
+    var center;
+    function calculateCenter() {
+      center = map.getCenter();
+    }
+    google.maps.event.addDomListener(map, 'idle', function() {
+      calculateCenter();
+    });
+    google.maps.event.addDomListener(window, 'resize', function() {
+      map.setCenter(center);
+    });
+
+  }
+
 
   return {
     getUserCurrentLocation: getUserCurrentLocation,
-    initMap: initMap
+    initMap: initMap,
+    centerMapOnWindowResize: centerMapOnWindowResize,
+    coffeeShops: coffeeShops
   };
 
 });
