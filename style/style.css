@@ -19,15 +19,51 @@
   background-color: white;
 }
 
+
+/************************ CAFE LIST VIEW STYLES **************************************/
 .cafe {
-  height: 100px;
+  height: 120px;
   /*border: 2px solid black;
   border-radius: 4px;*/
-  background-color: #B3D1FF;
+  background-color: white;
+  /*border: 1px solid lightgrey;*/
+  border-radius: 8px;
+  box-shadow: 2px 2px 2px darkgrey;
   margin: 10px;
-  color: white;
+  /*overflow: hidden;*/
+  /*color: white;*/
 }
 
+.cafe:hover {
+  background-color: rgba(46, 204, 113,.5);
+}
+
+.coffeeShopImage {
+  height: 100%;
+  width: 150px;
+  margin-right: 10px;
+  object-fit: cover;
+  float: left;
+}
+
+.coffeeShopInfo {
+  /*float:left;*/
+  margin-top: 2px;
+  margin-left: 5px;
+  /*color: steelblue;*/
+}
+
+.coffeeShopName {
+  margin-top: 2px;
+  font-weight: normal;
+  font-size: 1.5em;
+}
+
+.coffeeShopAddress {
+  /*float: left;*/
+}
+
+/***************** MAP INFO WINDOW STYLES**********************/
 .gm-style-iw {
   /*font-family: 'Avenir', sans-serif;*/
   overflow: scroll:
@@ -41,7 +77,7 @@
   /*margin-bottom: 10px;*/
   align: center;
   height: 125px;
-  width: 360px;
+  width: 100%;
   /*position: relative;*/
 }
 
@@ -67,4 +103,18 @@
 
 .opening-hours {
   color: green;
+}
+
+
+
+/*NG ANIMATE PRACTICE*/
+
+.fade.ng-enter {
+  transition:0.5s linear all;
+  opacity:0;
+}
+
+/* The finishing CSS styles for the enter animation */
+.fade.ng-enter.ng-enter-active {
+  opacity:1;
 }
