@@ -1,5 +1,5 @@
 <ul class="nav nav-pills pull-left">
-  <li class='logo'><a href="#/home">Brew4Two</a></li>
+  <li class="logo"><a href="#/home">Brew4Two</a></li>
   <li ><a href="#/signin">Sign In</a></li>
   <li ><a href="#/home">Landing Page</a></li>
   <li ><a href="#/appointments">My Appointments</a></li>
@@ -10,15 +10,16 @@
 
   <div id="map"></div>
 
-  <div id="cafeList">
-    <div class="cafe">{{coffeeShops[0]}}</div>
-    <div class="cafe">Cafe</div>
-    <div class="cafe">Cafe</div>
-    <div class="cafe">Cafe</div>
-    <div class="cafe">Cafe</div>
-    <div class="cafe">Cafe</div>
-    <div class="cafe">Cafe</div>
-    <div class="cafe">Cafe</div>
+  <div id="cafeList" ng-repeat="shop in coffeeShops">
+    <div class="cafe">
+      <img class="coffeeShopImage">
+      <h1 class="coffeeShopName">{{shop.name}}</h1>
+      <p></p>
+      <p></p>
+      <p></p>
+
+    </div>
+    <!-- <div class="cafe"></div> -->
   </div>
 
 </div>
