@@ -1,8 +1,14 @@
 angular.module('mapsApp', [])
 .controller('MapCtrl', function ($scope, MapHelpers) {
-  MapHelpers.initMap()
-  $scope.coffeeShops = MapHelpers.coffeeShops;
-  console.log('!!Line 5', $scope.coffeeShops);
+  MapHelpers.initMap();
+  $scope.coffeeShops;
+  // wait for coffee shops to populate.
+  setTimeout(function(){
+    $scope.coffeeShops = MapHelpers.coffeeShops;
+    console.log('!!Line 7: ', $scope.coffeeShops);
+  }, 1000);
+
+
 })
 .factory('MapHelpers', function(){
 
@@ -51,13 +57,24 @@ angular.module('mapsApp', [])
       position: place.geometry.location
     });
 
+    var photo = place.photos[0].getUrl({'maxWidth': 500, 'maxHeight': 500});
+    var openNow;
+
+    if(place.opening_hours.open_now) {
+      openNow = 'Open';
+    } else {
+      openNow = 'Closed';
+    }
+
+    var content = '<img src="'+photo+'">' + '<h2>' + place.name + '</h2>'+ '<p>' + place.formatted_address + '</p>' + '<p class="opening-hours">' + openNow + '</p>' + '<p>' + 'Rating: ' + place.rating + '</p>';
+
     google.maps.event.addListener(marker, 'click', function() {
-      infowindow.setContent(place.name);
+      infowindow.setContent(content);
       infowindow.open(map, this);
     });
 
-    // coffeeShops.push(place);
-    // console.log('++line 58', coffeeShops);
+    coffeeShops.push(place);
+    console.log('++line 58', coffeeShops);
   }
 
 
