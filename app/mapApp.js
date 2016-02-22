@@ -2,11 +2,13 @@ angular.module('mapsApp', [])
 .controller('MapCtrl', function ($scope, MapHelpers) {
   MapHelpers.initMap();
   $scope.coffeeShops = [];
+  $scope.photo = 'blah'
   // wait for coffee shops to populate.
   setTimeout(function(){
     // $scope.coffeeShops = MapHelpers.coffeeShops;
 
     for(var i = 0; i < MapHelpers.coffeeShops.length; i++){
+      MapHelpers.coffeeShops[i].shopImage = MapHelpers.coffeeShops[i].photos[0].getUrl({'maxWidth': 500, 'maxHeight': 500}); 
       $scope.coffeeShops.push(MapHelpers.coffeeShops[i]);
     }
     $scope.$digest();
