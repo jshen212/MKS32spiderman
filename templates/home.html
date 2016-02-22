@@ -10,8 +10,8 @@
 
   <div id="map"></div>
 
-  <div id="cafeList" ng-repeat="shop in coffeeShops">
-    <div class="cafe">
+  <div id="cafeList" ng-repeat="shop in coffeeShops" >
+    <div class="cafe" ng-click='toggleCoffeeShopAppointments()'>
       <img class="coffeeShopImage" src={{shop.shopImage}}>
       <div class='coffeeShopInfo'>
         <h1 class="coffeeShopName">{{shop.name}}</h1>

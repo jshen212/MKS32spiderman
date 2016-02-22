@@ -2,13 +2,14 @@ angular.module('mapsApp', [])
 .controller('MapCtrl', function ($scope, MapHelpers) {
   MapHelpers.initMap();
   $scope.coffeeShops = [];
-  $scope.photo = 'blah'
+
+  $scope.cafeFocus = null;
   // wait for coffee shops to populate.
   setTimeout(function(){
     // $scope.coffeeShops = MapHelpers.coffeeShops;
 
     for(var i = 0; i < MapHelpers.coffeeShops.length; i++){
-      MapHelpers.coffeeShops[i].shopImage = MapHelpers.coffeeShops[i].photos[0].getUrl({'maxWidth': 500, 'maxHeight': 500}); 
+      MapHelpers.coffeeShops[i].shopImage = MapHelpers.coffeeShops[i].photos[0].getUrl({'maxWidth': 500, 'maxHeight': 500});
       $scope.coffeeShops.push(MapHelpers.coffeeShops[i]);
     }
     $scope.$digest();
@@ -41,8 +42,15 @@ angular.module('mapsApp', [])
     var service = new google.maps.places.PlacesService(map);
     service.textSearch({
       location: santaMonica,
-      radius: 8050,
-      query: 'coffee'
+      radius: 2000,
+//       "restaurant"
+// 1: "cafe"
+// 2: "food"
+// 3: "store"
+// 4: "point_of_interest"
+// 5: "establishment"
+      types: ['cafe', 'restaurant', 'food', 'store', 'establishment', 'meal_takeaway', 'point_of_interest'],
+      query: ['coffee']
     }, callback);
   }
 
@@ -157,37 +165,6 @@ angular.module('mapsApp', [])
   };
 
 });
-    //
-    // $scope.markers = [];
-    //
-    // var infoWindow = new google.maps.InfoWindow();
-    //
-    // var createMarker = function (info){
-    //
-    //     var marker = new google.maps.Marker({
-    //         map: $scope.map,
-    //         position: new google.maps.LatLng(info.lat, info.long),
-    //         title: info.city
-    //     });
-    //     marker.content = '<div class="infoWindowContent">' + info.desc + '</div>';
-    //
-    //     google.maps.event.addListener(marker, 'click', function(){
-    //         infoWindow.setContent('<h2>' + marker.title + '</h2>' + marker.content);
-    //         infoWindow.open($scope.map, marker);
-    //     });
-    //
-    //     $scope.markers.push(marker);
-    //
-    // };
-    //
-    // for (i = 0; i < cities.length; i++){
-    //     createMarker(cities[i]);
-    // }
-    //
-    // $scope.openInfoWindow = function(e, selectedMarker){
-    //     e.preventDefault();
-    //     google.maps.event.trigger(selectedMarker, 'click');
-    // };
 
 
 
