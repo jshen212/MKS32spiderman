@@ -2,7 +2,14 @@ var app = angular.module('app', [
    'mapsApp',
    'signup',
    'ui.router'
-  ]);
+]);
+
+app.controller('cafeListCtrl', function($scope){
+  $scope.selected = false;
+  $scope.toggleCoffeeShopAppointments = function(){
+    $scope.selected = !$scope.selected;
+  }
+});
 
 app.config(['$urlRouterProvider', '$stateProvider', function($urlRouterProvider, $stateProvider){
   $urlRouterProvider.otherwise('/home');
