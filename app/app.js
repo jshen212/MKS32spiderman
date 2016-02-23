@@ -9,6 +9,13 @@ app.controller('cafeListCtrl', function($scope){
   $scope.toggleCoffeeShopAppointments = function(){
     $scope.selected = !$scope.selected;
   };
+
+  $scope.creatingAppointment = false;
+
+  $scope.createNewAppointment = function(){
+    console.log('hello')
+    $scope.creatingAppointment = !$scope.creatingAppointment;
+  }
 });
 
 app.config(['$routeProvider', '$httpProvider', function($routeProvider, $httpProvider){

@@ -2,7 +2,7 @@
   background-color: #e74c3c;
   width: 100%;
   position: fixed;
-  top:0;
+  top: 0;
   z-index: 2;
 }
 
@@ -108,8 +108,29 @@
   margin: 10px 10%;
   background-color: white;
   box-shadow: 2px 2px 2px darkgrey;
+
   /*z-index: 1;*/
 }
+
+.addAppointmentButton {
+  float: right;
+}
+
+.addNewAppointmentForm {
+  margin: 10px 10%;
+}
+.timeInput {
+  width: 82%;
+}
+
+/*.addAppointmentButton:hover {
+  background-color: green;
+}*/
+
+/*.addAppointmentButton:active {
+  background-color: darkgreen;
+}*/
+
 
 .meetupButton {
   float: right;

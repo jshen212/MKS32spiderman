@@ -15,7 +15,6 @@ angular.module('mapsApp', [])
     console.log('!!Line 7: ', $scope.coffeeShops);
   }, 1150);
 
-
 })
 .factory('MapHelpers', function(){
 
@@ -34,7 +33,7 @@ angular.module('mapsApp', [])
       zoom: 14
     });
 
-    getUserCurrentLocation(map);
+    // getUserCurrentLocation(map);
 
     infowindow = new google.maps.InfoWindow();
 
@@ -101,8 +100,6 @@ angular.module('mapsApp', [])
      var infoWindow = new google.maps.InfoWindow({map: map});
      var userCurrentLocation;
 
-
-
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function(position) {
           var pos = {
@@ -110,8 +107,8 @@ angular.module('mapsApp', [])
             lng: position.coords.longitude
           };
 
-          userCurrentLocation = pos;
-
+          // userCurrentLocation = pos;
+          // console.log(pos);
           infoWindow.setPosition(pos);
           infoWindow.setContent('Current location.');
           map.setCenter(pos);
@@ -135,27 +132,41 @@ angular.module('mapsApp', [])
       // console.log(userCurrentLocation);
   }
 
-  function centerMapOnWindowResize () {
-    var center;
-    function calculateCenter() {
-      center = map.getCenter();
-    }
-    google.maps.event.addDomListener(map, 'idle', function() {
-      calculateCenter();
-    });
-    google.maps.event.addDomListener(window, 'resize', function() {
-      map.setCenter(center);
-    });
 
-  }
+  // function returnLocation () {
+  //   if (navigator.geolocation) {
+  //       navigator.geolocation.getCurrentPosition(function(position) {
+  //         var pos = {
+  //           lat: position.coords.latitude,
+  //           lng: position.coords.longitude
+  //         };
+  //         return pos;
+  //       });
+  //   }
+  // };
+
+  // function centerMapOnWindowResize () {
+  //   var center;
+  //   function calculateCenter() {
+  //     center = map.getCenter();
+  //   }
+  //   google.maps.event.addDomListener(map, 'idle', function() {
+  //     calculateCenter();
+  //   });
+  //   google.maps.event.addDomListener(window, 'resize', function() {
+  //     map.setCenter(center);
+  //   });
+  //
+  // }
 
 
   return {
     getUserCurrentLocation: getUserCurrentLocation,
     initMap: initMap,
-    centerMapOnWindowResize: centerMapOnWindowResize,
     coffeeShops: coffeeShops
   };
+    // centerMapOnWindowResize: centerMapOnWindowResize,
+    // returnLocation: returnLocation
 
 });
 
