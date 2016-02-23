@@ -54,8 +54,9 @@ app.post('/signin', function(req, res){
   var password = req.body.password;
   var found = false;
   db.users.find({email:email}, function(err, exists){
+    console.log('line57++ server.js', exists);
 
-    if(!exists){
+    if(!exists.length){
       console.log('email does not exist');
       res.send(false);
     }
