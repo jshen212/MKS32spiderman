@@ -3,18 +3,16 @@ angular.module('mapsApp', [])
   MapHelpers.initMap();
   $scope.coffeeShops = [];
 
-  $scope.cafeFocus = null;
   // wait for coffee shops to populate.
   setTimeout(function(){
-    // $scope.coffeeShops = MapHelpers.coffeeShops;
-
     for(var i = 0; i < MapHelpers.coffeeShops.length; i++){
       MapHelpers.coffeeShops[i].shopImage = MapHelpers.coffeeShops[i].photos[0].getUrl({'maxWidth': 500, 'maxHeight': 500});
+      // MapHelpers.coffeeShops[i].open = false;
       $scope.coffeeShops.push(MapHelpers.coffeeShops[i]);
     }
     $scope.$digest();
     console.log('!!Line 7: ', $scope.coffeeShops);
-  }, 1000);
+  }, 1150);
 
 
 })
