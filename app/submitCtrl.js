@@ -14,6 +14,7 @@ angular.module('signup', [])
     console.log('signing in');
     $http.post('/signin', $scope.user).success(function(response){
       console.log('line16++ successful SIGN IN', response);
+      
       if(response){
         $location.path('/home');
       } else {
