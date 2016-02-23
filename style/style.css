@@ -1,6 +1,19 @@
 .logo {
-  font-size: 2em;
+  font-size: 3em;
+  font-family: 'Kaushan Script', sans-serif;
+  color: #e74c3c;
+  /*text-shadow: 2px 2px 2px darkgrey;*/
 }
+
+.header {
+  background-color: #e74c3c;
+  width: 100%;
+}
+
+.header a {
+  color: white;
+}
+
 #map {
   margin: 0;
   padding: 0;
@@ -22,32 +35,32 @@
 
 /************************ CAFE LIST VIEW STYLES **************************************/
 .cafe {
-  height: 120px;
-  /*border: 2px solid black;
-  border-radius: 4px;*/
-  background-color: white;
-  /*border: 1px solid lightgrey;*/
-  border-radius: 8px;
-  box-shadow: 2px 2px 2px darkgrey;
+  min-height: 120px;
+  /*background-color: white;*/
+  border-bottom: 1px solid lightgrey;
+  /*border-radius: 8px;*/
+  /*box-shadow: 2px 2px 2px darkgrey;*/
   margin: 10px;
-  /*overflow: hidden;*/
-  /*color: white;*/
 }
 
 .cafe:hover {
   background-color: rgba(46, 204, 113,.5);
+  /*background-color:#FFE0DD;*/
+  /*box-shadow: 2px 2px 2px lightblue; */
 }
 
 .coffeeShopImage {
-  height: 100%;
+  height: 120px;
   width: 150px;
   margin-right: 10px;
+  padding: 5px 5px 10px 5px;
   object-fit: cover;
   float: left;
 }
 
 .coffeeShopInfo {
   /*float:left;*/
+  padding-top: 5px;
   margin-top: 2px;
   margin-left: 5px;
   /*color: steelblue;*/
@@ -61,6 +74,19 @@
 
 .coffeeShopAddress {
   /*float: left;*/
+}
+
+.appointmentsDashboard {
+  height: 400px;
+  width: 100%;
+  margin-top: 5em;
+}
+.appointmentsTitle {
+  /*display: block;*/
+  position: relative;
+  margin: 0 auto;
+  text-align: center;
+  font-weight: regular;
 }
 
 /***************** MAP INFO WINDOW STYLES**********************/
