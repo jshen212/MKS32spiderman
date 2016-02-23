@@ -28,17 +28,14 @@
   font-size: 1em;
 }
 
-
-
 #map {
-  /*margin: 25px 10%;*/
-  height: 900px;
-  width: 100%;
-  /*position: fixed;*/
-  float:right;
-  position: fixed;
-  overflow: hidden;
-  z-index: 0;
+  display: block;
+  position:absolute;
+  height:auto;
+  bottom:0;
+  top:0;
+  left:0;
+  right:0;
 }
 
 .cafeList {
@@ -63,13 +60,13 @@
 }
 /*
 .left-column {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  overflow: scroll;
+position: fixed;
+top: 0;
+bottom: 0;
+overflow: scroll;
 }*/
 /*.modal-footer {
-  border-top: 0px;
+border-top: 0px;
 
 }*/
 
@@ -155,23 +152,23 @@
 }
 
 .gm-style-iw h2 {
-   font-size: 1.5em;
-   margin-bottom: 0;
-   margin-top: 0;
-   padding: 5px;
-   font-weight: normal;
-   background-color: rgba(46, 204, 113,1);
-   /*background-size: contain;*/
-   /*top: 5px;*/
-   color: white;
-   /*left: 0;*/
-   /*width: 100%;*/
+  font-size: 1.5em;
+  margin-bottom: 0;
+  margin-top: 0;
+  padding: 5px;
+  font-weight: normal;
+  background-color: rgba(46, 204, 113,1);
+  /*background-size: contain;*/
+  /*top: 5px;*/
+  color: white;
+  /*left: 0;*/
+  /*width: 100%;*/
 }
 
 .gm-style-iw p {
-   margin-bottom: 0;
-   margin-top: 0;
-   line-height: 1.5em;
+  margin-bottom: 0;
+  margin-top: 0;
+  line-height: 1.5em;
 }
 
 .opening-hours {
