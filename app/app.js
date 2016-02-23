@@ -21,6 +21,7 @@ app.config(['$routeProvider', function($routeProvider){
 
   .when('/appointments', {
     templateUrl: 'templates/appointments.html',
+    controller: 'submitCtrl'
   })
 
   .when('/signin', {

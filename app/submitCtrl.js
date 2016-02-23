@@ -2,6 +2,10 @@ angular.module('signup', [])
 
 .controller('submitCtrl', ['$scope', '$http', '$location', '$window', function ($scope, $http, $location, $window) {
 
+  $scope.isAuth = function(){
+    return Boolean($window.localStorage.getItem('com.brewed'));
+  };
+
   $scope.addUser = function(){
     $http.post('/signup', $scope.newUser).success(function(response){
       $location.path('/signin');
@@ -13,7 +17,7 @@ angular.module('signup', [])
 
       // if a token comes back, redirect to home
       if(response){
-        $window.localStorage.setItem('com.brewfortwo', response);
+        $window.localStorage.setItem('com.brewed', response);
         $location.path('/home');
       }
 
@@ -29,14 +33,18 @@ angular.module('signup', [])
     console.log('submitCtrl.js line 37++', $scope.token);
     $http.post('/appointments', $scope.token).success(function(response){
       console.log('line39++ submitctrl ', response);
-    //   if($window.localStorage.getItem('token', )){
-    //     $location.path('/appointments');
-    //   }
+      if($scope.isAuth()){
+        $location.path('/appointments');
+      }
+
+      else {
+        $location.path('/signin');
+      }
     });
   };
 
   $scope.signout = function(){
-    $window.localStorage.removeItem('com.brewfortwo');
+    $window.localStorage.removeItem('com.brewed');
     $location.path('/home');
   };
 
