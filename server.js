@@ -57,6 +57,7 @@ app.post('/signin', function(req, res){
     console.log(exists);
     if(!exists){
       console.log('email does not exist');
+      res.send('/signup');
     }
 
     else {
