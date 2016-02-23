@@ -52,7 +52,7 @@
   min-height: 120px;
   border-bottom: 1px solid lightgrey;
   margin: 10px 10%;
-  background-color: rgba(255,255,255,.90);
+  background-color: rgba(255,255,255,.75);
 }
 
 .cafe:hover {
@@ -76,24 +76,50 @@
 
 .coffeeShopName {
   margin-top: 2px;
-  font-weight: normal;
+  font-weight: 200;
   font-size: 1.5em;
 }
 
 .coffeeShopAddress {
   /*float: left;*/
+  margin-top: -8px;
 }
+
+/***************** Appointments ********************/
 
 .appointmentsDashboard {
   height: 400px;
   width: 100%;
-  margin-top: 5em;
+  margin-top: 4.2em;
+  overflow: scroll;
+  border-top: 1px solid darkgrey;
 }
 .appointmentsTitle {
   position: relative;
   margin: 0 auto;
+  margin-top: 10px;
   text-align: center;
-  font-weight: regular;
+  font-weight: 200;
+}
+
+.appointment {
+  min-height: 75px;
+  border-bottom: 1px solid lightgrey;
+  margin: 10px 10%;
+  background-color: white;
+  box-shadow: 2px 2px 2px darkgrey;
+  /*z-index: 1;*/
+}
+
+.meetupButton {
+  float: right;
+  /*margin:0;*/
+  height: 75px;
+  width: 75px;
+  background-color: chartreuse;
+  color: white;
+  border: none;
+  overflow: hidden;
 }
 
 /***************** MAP INFO WINDOW STYLES**********************/
