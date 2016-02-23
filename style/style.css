@@ -8,7 +8,6 @@
 
 .header a {
   color: white;
-
 }
 
 .logo {
@@ -16,7 +15,6 @@
   font-family: 'Kaushan Script', sans-serif;
   color: #e74c3c;
   margin-bottom: -5px;
-  /*float: left;*/
   text-shadow: 2px 2px 2px #BF2415;
 }
 
@@ -39,57 +37,25 @@
 }
 
 .cafeList {
-  /*position: fixed;*/
-  /*top: 120;*/
-  /*bottom:0;*/
-  /*position: relative;*/
-  /*top: 100;*/
-  height: 100%;
+  top: 55px;
+  height: 94.5%;
   width: 40%;
-  margin-top: 55px;
-  /*margin-bottom: 20px;*/
-  /*padding-bottom: 20px;*/
   background-color: rgba(255,255,255,0.5);
   overflow: scroll;
   position:absolute;
   opacity:20%;
   z-index: 1;
-  /*box-shadow: 1px 1px 1px darkgrey;*/
-
-  /*float:left;*/
 }
-/*
-.left-column {
-position: fixed;
-top: 0;
-bottom: 0;
-overflow: scroll;
-}*/
-/*.modal-footer {
-border-top: 0px;
-
-}*/
-
-
 
 /************************ CAFE LIST VIEW STYLES **************************************/
 .cafe {
   min-height: 120px;
-  /*background-color: white;*/
   border-bottom: 1px solid lightgrey;
-  /*border-radius: 8px;*/
-  /*box-shadow: 1px 1px 1px darkgrey;*/
   margin: 10px 10%;
   background-color: rgba(255,255,255,.90);
-
-
-  /*float: left;*/
 }
 
 .cafe:hover {
-  /*background-color: rgba(46, 204, 113,.5);*/
-  /*background-color:#FFE0DD;*/
-  /*box-shadow: 2px 2px 2px lightblue; */
   border-bottom: 2px solid #e74c3c;
 }
 
@@ -103,11 +69,9 @@ border-top: 0px;
 }
 
 .coffeeShopInfo {
-  /*float:left;*/
   padding-top: 5px;
   margin-top: 2px;
   margin-left: 5px;
-  /*color: steelblue;*/
 }
 
 .coffeeShopName {
@@ -126,7 +90,6 @@ border-top: 0px;
   margin-top: 5em;
 }
 .appointmentsTitle {
-  /*display: block;*/
   position: relative;
   margin: 0 auto;
   text-align: center;
@@ -135,7 +98,6 @@ border-top: 0px;
 
 /***************** MAP INFO WINDOW STYLES**********************/
 .gm-style-iw {
-  /*font-family: 'Avenir', sans-serif;*/
   overflow: scroll:
   padding: 0;
   margin: 0;
@@ -144,11 +106,9 @@ border-top: 0px;
 .gm-style-iw img {
   object-fit: cover;
   margin: auto;
-  /*margin-bottom: 10px;*/
   align: center;
   height: 125px;
   width: 100%;
-  /*position: relative;*/
 }
 
 .gm-style-iw h2 {
@@ -158,11 +118,7 @@ border-top: 0px;
   padding: 5px;
   font-weight: normal;
   background-color: rgba(46, 204, 113,1);
-  /*background-size: contain;*/
-  /*top: 5px;*/
   color: white;
-  /*left: 0;*/
-  /*width: 100%;*/
 }
 
 .gm-style-iw p {
@@ -190,10 +146,8 @@ border-top: 0px;
 }
 
 
-
-
 .main-view {
   max-width: 100%;
-  max-height: 727px;
+  max-height: 700px;
   overflow: hidden;
 }
