@@ -1,6 +1,19 @@
 .logo {
-  font-size: 2em;
+  font-size: 3em;
+  font-family: 'Kaushan Script', sans-serif;
+  color: #e74c3c;
+  /*text-shadow: 2px 2px 2px darkgrey;*/
 }
+
+.header {
+  background-color: #e74c3c;
+  width: 100%;
+}
+
+.header a {
+  color: white;
+}
+
 #map {
   margin: 0;
   padding: 0;
@@ -35,7 +48,9 @@
 }
 
 .cafe:hover {
-  background-color: rgba(46, 204, 113,.5);
+  /*background-color: rgba(46, 204, 113,.5);*/
+  background-color:#FFE0DD;
+  /*box-shadow: 2px 2px 2px lightblue; */
 }
 
 .coffeeShopImage {
