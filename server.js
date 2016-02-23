@@ -13,20 +13,29 @@ app.use(express.static(__dirname+'/'));
 app.use(bodyParser.json());
 
 // handles get requests to bulletin path
-app.get('/bulletin', function(req,res){
-  // TODO: Query for latitude and logitude.
-  db.appointments.find({}, function(err, doc){
-    res.json(doc);
-  });
-});
+// app.get('/appointments', function(req,res){
+//   // TODO: Query for latitude and logitude.
+//   db.appointments.find({}, function(err, doc){
+//     res.json(doc);
+//   });
+// });
 
 
-// handles post requests to bulletin path
-app.post('/bulletin', function(req, res){
+// handles post requests to appointments path
+app.post('/appointments', function(req, res){
   // TODO: Get submitter's ID. Place it in appointments table.
-  db.appointments.insert(req.body, function(err, doc){
-    res.send('/bulletin');
-  });
+  // db.appointments.insert(req.body, function(err, doc){
+  //   res.send('/bulletin');
+  // });
+
+  console.log('line31++ server.js', req.body);
+  if(req.body){
+    res.send(true);
+  } else {
+    res.send(false);
+  }
+
+
 });
 
 // TODO: Setup user appointment update requests.
@@ -49,20 +58,17 @@ app.get('/signin', function(req, res){
 });
 
 app.post('/signin', function(req, res){
-  console.log('inside post sign in at server.js');
   var email = req.body.email;
   var password = req.body.password;
   var found = false;
   db.users.find({email:email}, function(err, exists){
-    console.log('line57++ server.js', exists);
 
     if(!exists.length){
-      console.log('email does not exist');
       res.send(false);
     }
 
     else {
-      console.log('email exists!!!!!');
+      console.log('line71++ server.js, email exists!!!!!');
       // setting up token payload and secret
       var payload = { email: email };
       var secret = 'brewed';
@@ -70,7 +76,7 @@ app.post('/signin', function(req, res){
       // encode token
       var token = jwt.encode(payload, secret);
 
-      console.log('++line73, TOKEN: ', token);
+      console.log('++line79, server.js TOKEN: ', token);
 
       // decode token
       var decoded = jwt.decode(token, secret);

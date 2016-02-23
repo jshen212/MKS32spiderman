@@ -1,33 +1,51 @@
 angular.module('signup', [])
 
-.controller('submitCtrl', ['$scope', '$http', '$location', function ($scope, $http, $location) {
+.controller('submitCtrl', ['$scope', '$http', '$location', '$window', function ($scope, $http, $location, $window) {
+
+  $scope.isAuth = function(){
+    return Boolean($window.localStorage.getItem('com.brewed'));
+  };
 
   $scope.addUser = function(){
-    console.log('NEW USER', $scope.newUser);
     $http.post('/signup', $scope.newUser).success(function(response){
-      console.log('SUCCESSFUL POST TO SERVER');
       $location.path('/signin');
     });
   };
 
   $scope.signin = function(){
-    console.log('signing in');
     $http.post('/signin', $scope.user).success(function(response){
-      console.log('line16++ successful SIGN IN', response);
-      
+
+      // if a token comes back, redirect to home
       if(response){
+        $window.localStorage.setItem('com.brewed', response);
         $location.path('/home');
-      } else {
+      }
+
+      // if no token, redirect to signin
+      else {
         $location.path('/signin');
       }
     });
   };
 
-  $scope.signup = function(){
-    console.log('signing up');
-    $http.post('/signup', $scope.newUser).success(function(response){
-      console.log('FINISHED SIGNING UP');
-      $location.path('/home');
+  $scope.getAppointments = function(){
+    console.log('submitCtrl line36++, appointment button clicked');
+    console.log('submitCtrl.js line 37++', $scope.token);
+    $http.post('/appointments', $scope.token).success(function(response){
+      console.log('line39++ submitctrl ', response);
+      if($scope.isAuth()){
+        $location.path('/appointments');
+      }
+
+      else {
+        $location.path('/signin');
+      }
     });
   };
+
+  $scope.signout = function(){
+    $window.localStorage.removeItem('com.brewed');
+    $location.path('/home');
+  };
+
 }]);
