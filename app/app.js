@@ -15,11 +15,12 @@ app.config(['$routeProvider', function($routeProvider){
   $routeProvider
 
   .when('/home', {
-    templateUrl: 'templates/home.html'
+    templateUrl: 'templates/home.html',
+    controller: 'submitCtrl'
   })
 
   .when('/appointments', {
-    templateUrl: 'templates/appointments.html'
+    templateUrl: 'templates/appointments.html',
   })
 
   .when('/signin', {
