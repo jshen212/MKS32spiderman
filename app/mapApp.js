@@ -10,6 +10,7 @@ angular.module('mapsApp', [])
       // MapHelpers.coffeeShops[i].open = false;
       $scope.coffeeShops.push(MapHelpers.coffeeShops[i]);
     }
+    // without digest, ng-repeat will not be able to read the updated coffeeShops array on the scope
     $scope.$digest();
     console.log('!!Line 7: ', $scope.coffeeShops);
   }, 1150);
@@ -41,12 +42,6 @@ angular.module('mapsApp', [])
     service.textSearch({
       location: santaMonica,
       radius: 2000,
-//       "restaurant"
-// 1: "cafe"
-// 2: "food"
-// 3: "store"
-// 4: "point_of_interest"
-// 5: "establishment"
       types: ['cafe', 'restaurant', 'food', 'store', 'establishment', 'meal_takeaway', 'point_of_interest'],
       query: ['coffee']
     }, callback);
@@ -87,7 +82,7 @@ angular.module('mapsApp', [])
     }
 
     var content = '<img src="'+photo+'">' + '<h2>' + place.name + '</h2>'+ '<p>' + place.formatted_address + '</p>' + '<p class="opening-hours">' + openNow + '</p>' + '<p>' + 'Rating: ' + place.rating + '</p>';
-    console.log(photo);
+    // console.log(photo);
     google.maps.event.addListener(marker, 'click', function() {
       infowindow.setContent(content);
       infowindow.open(map, this);
