@@ -1,20 +1,18 @@
 var express     = require('express');
 var mongojs     = require('mongojs');
 var bodyParser     = require('body-parser');
-var db     = mongojs('brewfortwo', ['users']);
-
-// var util = require('./utility.js');
 var partial = require('express-partials');
+var db     = mongojs('brewfortwo', ['users']);
+var jwt = require('jwt-simple');
 
+// initiates express
 var app = express();
 
-// configure our server with all the middleware and and routing
-// require('./config/middleware.js')(app, express);
-
-// Serve static index.html from server.
+// serves static index.html from server
 app.use(express.static(__dirname+'/'));
 app.use(bodyParser.json());
 
+// handles get requests to bulletin path
 app.get('/bulletin', function(req,res){
   // TODO: Query for latitude and logitude.
   db.appointments.find({}, function(err, doc){
@@ -22,6 +20,8 @@ app.get('/bulletin', function(req,res){
   });
 });
 
+
+// handles post requests to bulletin path
 app.post('/bulletin', function(req, res){
   // TODO: Get submitter's ID. Place it in appointments table.
   db.appointments.insert(req.body, function(err, doc){
@@ -32,6 +32,7 @@ app.post('/bulletin', function(req, res){
 // TODO: Setup user appointment update requests.
 // app.put('/bulletin')
 
+// handles post requests to signup path
 app.post('/signup', function(req,res){
   db.users.insert(req.body, function(err, doc){
     if(err){
@@ -42,7 +43,6 @@ app.post('/signup', function(req,res){
   res.send('/signin');
 });
 
-// login route ( creates session upon login)
 // TODO: Setup login requests.
 app.get('/signin', function(req, res){
   res.render('/signin');
@@ -54,15 +54,27 @@ app.post('/signin', function(req, res){
   var password = req.body.password;
   var found = false;
   db.users.find({email:email}, function(err, exists){
-    console.log(exists);
+
     if(!exists){
       console.log('email does not exist');
-      res.send('/signup');
+      res.send(false);
     }
 
     else {
       console.log('email exists!!!!!');
-      res.send('/home');
+      // setting up token payload and secret
+      var payload = { email: email };
+      var secret = 'brewed';
+
+      // encode token
+      var token = jwt.encode(payload, secret);
+
+      console.log('++line73, TOKEN: ', token);
+
+      // decode token
+      var decoded = jwt.decode(token, secret);
+
+      res.send(token);
     }
   });
 });
