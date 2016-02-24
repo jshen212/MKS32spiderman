@@ -2,7 +2,7 @@ var express     = require('express');
 var mongojs     = require('mongojs');
 var bodyParser     = require('body-parser');
 var partial = require('express-partials');
-var db     = mongojs('brewfortwo', ['users']);
+var db     = mongojs('brewfortwo', ['users', 'appointments']);
 var jwt = require('jwt-simple');
 
 // initiates express
@@ -27,18 +27,19 @@ app.post('/appointments', function(req, res){
   var token = req.body.host_id;
   var secret = "brewed";
   var decoded = jwt.decode(token, secret);
-  console.log("++line 30 in server.js, decoded is: ", decoded);
+  // console.log("++line 30 in server.js, decoded is: ", decoded);
+  req.body.email = decoded.email;
 
-  // db.appointments.insert(req.body, function(err, doc){
-  //   res.send('/bulletin');
-  // });
-
-  console.log('line36++ server.js', req.body);
-  if(req.body){
+  db.appointments.insert(req.body, function(err, doc){
     res.send(true);
-  } else {
-    res.send(false);
-  }
+  });
+
+  //console.log('line36++ server.js', req.body);
+  // if(req.body){
+  //   res.send(true);
+  // } else {
+  //   res.send(false);
+  // }
 
 
 });
