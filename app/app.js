@@ -14,13 +14,18 @@ app.controller('cafeListCtrl', ['$scope', '$http', function($scope, $http){
 
   $scope.creatingAppointment = false;
   $scope.createNewAppointment = function(){
+    if($scope.selected === true){
+      $scope.selected = false;
+    }
     $scope.creatingAppointment = !$scope.creatingAppointment;
   }
 
-  $scope.addNewAppointment = function(shopId){
+  $scope.addNewAppointment = function(shopId, time, day){
     $scope.newAppointment.id = shopId;
+    // $scope.newAppointment.time = time;
+    // $scope.newAppointment.day = day;
     console.log('++newAppointmentId: ', $scope.newAppointment.id);
-    console.log('++newAppointmentId: ', $scope.newAppointment);
+    console.log('++newAppointment object: ', $scope.newAppointment);
     // shopId
     // day
     // time
