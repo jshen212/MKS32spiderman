@@ -4,7 +4,7 @@ var app = angular.module('app', [
    'ngRoute'
 ]);
 
-app.controller('cafeListCtrl', ['$scope', '$http', '$window', function($scope, $http, $window){
+app.controller('cafeListCtrl', ['$scope', '$http', '$window', '$location', function($scope, $http, $window, $location){
   $scope.newAppointment = {};
   // $scope.appointmentList;
 
@@ -31,22 +31,30 @@ app.controller('cafeListCtrl', ['$scope', '$http', '$window', function($scope, $
   }
 
   $scope.addNewAppointment = function(shopId, shop){
-    $scope.newAppointment.id = shopId;
-    $scope.newAppointment.shop = shop;
-    $scope.newAppointment.host_id = $window.localStorage.getItem('com.brewed');
-    console.log('++line 26, token: ', $window.localStorage.getItem('com.brewed'));
-    // shopId
-    // day
-    // time
-    // host user
-    console.log('++newAppointmentId: ', $scope.newAppointment.id);
-    console.log('++newAppointment object: ', $scope.newAppointment);
+    var hostId = $window.localStorage.getItem('com.brewed');
 
-    $http.post('/createAppointment', $scope.newAppointment).success(function(req, res){
-      console.log('sent to server: ', $scope.newAppointment);
-    });
-  }
+    if(!hostId){
+      $location.path('/signin');
+    }
 
+    else {
+      $scope.newAppointment.id = shopId;
+      $scope.newAppointment.shop = shop;
+      $scope.newAppointment.host_id = hostId;
+      $scope.newAppointment.guest_id = null;
+      console.log('++line 26, token: ', $window.localStorage.getItem('com.brewed'));
+      // shopId
+      // day
+      // time
+      // host user
+      console.log('++newAppointmentId: ', $scope.newAppointment.id);
+      console.log('++newAppointment object: ', $scope.newAppointment);
+
+      $http.post('/createAppointment', $scope.newAppointment).success(function(req, res){
+        console.log('sent to server: ', $scope.newAppointment);
+      });
+    }
+  };
 }]);
 
 app.config(['$routeProvider', '$httpProvider', function($routeProvider, $httpProvider){
