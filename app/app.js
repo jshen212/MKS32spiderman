@@ -4,19 +4,33 @@ var app = angular.module('app', [
    'ngRoute'
 ]);
 
-app.controller('cafeListCtrl', function($scope){
+app.controller('cafeListCtrl', ['$scope', '$http', function($scope, $http){
+  $scope.newAppointment = {};
+
   $scope.selected = false;
   $scope.toggleCoffeeShopAppointments = function(){
     $scope.selected = !$scope.selected;
   };
 
   $scope.creatingAppointment = false;
-
   $scope.createNewAppointment = function(){
-    console.log('hello')
     $scope.creatingAppointment = !$scope.creatingAppointment;
   }
-});
+
+  $scope.addNewAppointment = function(shopId){
+    $scope.newAppointment.id = shopId;
+    console.log('++newAppointmentId: ', $scope.newAppointment.id);
+    console.log('++newAppointmentId: ', $scope.newAppointment);
+    // shopId
+    // day
+    // time
+    // host user
+    // $http.post('/appointment', $scope.newAppointment).success(function(req, res){
+    //   shopId
+    // }))
+  }
+
+}]);
 
 app.config(['$routeProvider', '$httpProvider', function($routeProvider, $httpProvider){
   $routeProvider
