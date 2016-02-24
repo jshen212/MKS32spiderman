@@ -4,7 +4,7 @@ var app = angular.module('app', [
    'ngRoute'
 ]);
 
-app.controller('cafeListCtrl', ['$scope', '$http', function($scope, $http){
+app.controller('cafeListCtrl', ['$scope', '$http', '$window', function($scope, $http, $window){
   $scope.newAppointment = {};
 
   $scope.selected = false;
@@ -14,25 +14,28 @@ app.controller('cafeListCtrl', ['$scope', '$http', function($scope, $http){
 
   $scope.creatingAppointment = false;
   $scope.createNewAppointment = function(){
-    if($scope.selected === true){
-      $scope.selected = false;
+    if($scope.selected === false){
+      $scope.selected = true;
     }
     $scope.creatingAppointment = !$scope.creatingAppointment;
   }
 
-  $scope.addNewAppointment = function(shopId, time, day){
+  $scope.addNewAppointment = function(shopId, shop){
     $scope.newAppointment.id = shopId;
-    // $scope.newAppointment.time = time;
-    // $scope.newAppointment.day = day;
-    console.log('++newAppointmentId: ', $scope.newAppointment.id);
-    console.log('++newAppointment object: ', $scope.newAppointment);
+    $scope.newAppointment.shop = shop;
+    $scope.newAppointment.host_id = $window.localStorage.getItem('com.brewed');
+    console.log('++line 26, token: ', $window.localStorage.getItem('com.brewed'));
     // shopId
     // day
     // time
     // host user
-    // $http.post('/appointment', $scope.newAppointment).success(function(req, res){
-    //   shopId
-    // }))
+
+    console.log('++newAppointmentId: ', $scope.newAppointment.id);
+    console.log('++newAppointment object: ', $scope.newAppointment);
+
+    $http.post('/appointments', $scope.newAppointment).success(function(req, res){
+      console.log('sent to server: ', $scope.newAppointment);
+    });
   }
 
 }]);

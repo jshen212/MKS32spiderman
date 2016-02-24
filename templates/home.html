@@ -18,7 +18,7 @@
         <div class='coffeeShopInfo'>
           <h1 class="coffeeShopName">{{shop.name}}</h1>
           <p class='coffeeShopAddress'>{{shop.formatted_address}}
-          <span ng-click="createNewAppointment(); toggleCoffeeShopAppointments()" class="addAppointmentButton btn btn-success">add new</span> </p>
+          <span ng-click="createNewAppointment()" class="addAppointmentButton btn btn-success">add new</span> </p>
         </div>
 
         <div class="appointmentsDashboard" ng-if='selected'>
@@ -29,26 +29,8 @@
                  Time: <input ng-model="newAppointment.time" class='timeInput' type="time" name="time">
                  Day:   <input ng-model="newAppointment.day" class='timeInput' type="date" name="date">
                  <input name="coffeShopObject" value={{shop}} ng-show="false">
-                 <input ng-click='addNewAppointment(shop.id)' type="submit" value="Submit">
+                 <input ng-click='addNewAppointment(shop.id, shop)' type="submit" value="Submit">
               </form>
-            </div>
-            <div class="appointment">
-              <button class='meetupButton'>join</button>
-            </div>
-            <div class="appointment">
-              <button class='meetupButton'>join</button>
-            </div>
-            <div class="appointment">
-              <button class='meetupButton'>join</button>
-            </div>
-            <div class="appointment">
-              <button class='meetupButton'>join</button>
-            </div>
-            <div class="appointment">
-              <button class='meetupButton'>join</button>
-            </div>
-            <div class="appointment">
-              <button class='meetupButton'>join</button>
             </div>
             <div class="appointment">
               <button class='meetupButton'>join</button>

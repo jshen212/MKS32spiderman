@@ -24,11 +24,16 @@ app.use(bodyParser.json());
 // handles post requests to appointments path
 app.post('/appointments', function(req, res){
   // TODO: Get submitter's ID. Place it in appointments table.
+  var token = req.body.host_id;
+  var secret = "brewed";
+  var decoded = jwt.decode(token, secret);
+  console.log("++line 30 in server.js, decoded is: ", decoded);
+
   // db.appointments.insert(req.body, function(err, doc){
   //   res.send('/bulletin');
   // });
 
-  console.log('line31++ server.js', req.body);
+  console.log('line36++ server.js', req.body);
   if(req.body){
     res.send(true);
   } else {
