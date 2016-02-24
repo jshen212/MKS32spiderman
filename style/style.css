@@ -18,6 +18,39 @@
   text-shadow: 2px 2px 2px #BF2415;
 }
 
+body{
+  background-image: url('http://blog.uvm.edu/sthaxter/files/2015/12/Screen-Shot-2015-12-08-at-3.40.26-PM.png');
+  background-size: stretch;
+  height: auto;
+  background-repeat: no-repeat;
+}
+.login-form {
+  background-color: rgba(255,255,255,0.75);
+}
+.login-logo {
+  font-size: 4em;
+  font-family: 'Kaushan Script', sans-serif;
+  color: #e74c3c;
+  margin-bottom: -5px;
+  /*text-shadow: 2px 2px 2px #BF2415;*/
+}
+.login-buttons {
+  background-color: #e74c3c;
+  color: white;
+}
+.login-buttons:hover {
+  color: white;
+  text-decoration: none;
+}
+.login-buttons, a {
+  color: white;
+  text-decoration: none;
+}
+.login-buttons, a:hover {
+  color: white;
+  text-decoration: none;
+}
+
 .links {
   margin-top: 5px;
   margin-bottom: -5px;
@@ -25,6 +58,11 @@
   border: 1px solid white;
   font-size: 1em;
 }
+
+/*.login {
+  background-image: url("http://cdn1.tnwcdn.com/wp-content/blogs.dir/1/files/2015/09/Screen-Shot-2015-09-11-at-3.43.50-PM.png");
+  background-size: cover;
+}*/
 
 #map {
   display: block;

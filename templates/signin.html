@@ -1,10 +1,11 @@
 <!--login modal-->
+<div class="login">
 <div id="loginModal" class="modal show" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog">
-  <div class="modal-content">
+  <div class="login-form modal-content">
       <div class="modal-header">
 
-          <h1 class="text-center">Login</h1>
+          <h1 class="text-center login-logo">Brew4Two</h1>
       </div>
       <div class="modal-body">
           <form class="form col-md-12 center-block">
@@ -12,8 +13,8 @@
               <input type="text" class="form-control input-lg" placeholder="Email" ng-model="user.email">
             </div>
             <div class="form-group">
-              <button class="btn btn-primary btn-lg btn-block" ng-click="signin()">Sign In</button>
-              <span class="pull-right"><a href="#/signup">Sign Up</a></span>
+              <button class="login-buttons btn btn-lg btn-block" ng-click="signin()">Sign In</button>
+              <button class="login-buttons btn btn-lg btn-block"><a href="#/signup">Sign Up</a></button>
             </div>
           </form>
       </div>
@@ -23,4 +24,5 @@
       </div>
   </div>
   </div>
+</div>
 </div>
