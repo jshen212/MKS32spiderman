@@ -6,10 +6,20 @@ var app = angular.module('app', [
 
 app.controller('cafeListCtrl', ['$scope', '$http', '$window', function($scope, $http, $window){
   $scope.newAppointment = {};
+  // $scope.appointmentList;
 
   $scope.selected = false;
-  $scope.toggleCoffeeShopAppointments = function(){
+  $scope.toggleCoffeeShopAppointments = function(shopId){
     $scope.selected = !$scope.selected;
+    console.log(shopId);
+    // query db for all appointments with matching id
+    $scope.appointmentList = [];
+    $http.post('/getAppointments', { id: shopId }).success(function(res){
+      console.log('__line17 response from server = ', res);
+      $scope.appointmentList = res;
+      console.log($scope.appointmentList);
+    });
+
   };
 
   $scope.creatingAppointment = false;
@@ -29,11 +39,10 @@ app.controller('cafeListCtrl', ['$scope', '$http', '$window', function($scope, $
     // day
     // time
     // host user
-
     console.log('++newAppointmentId: ', $scope.newAppointment.id);
     console.log('++newAppointment object: ', $scope.newAppointment);
 
-    $http.post('/appointments', $scope.newAppointment).success(function(req, res){
+    $http.post('/createAppointment', $scope.newAppointment).success(function(req, res){
       console.log('sent to server: ', $scope.newAppointment);
     });
   }

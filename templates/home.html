@@ -14,7 +14,7 @@
     <div ng-controller="cafeListCtrl" ng-repeat="shop in coffeeShops" >
 
       <div class="cafe">
-        <img ng-click='toggleCoffeeShopAppointments()' class="coffeeShopImage" src={{shop.shopImage}}>
+        <img ng-click='toggleCoffeeShopAppointments(shop.id)' class="coffeeShopImage" src={{shop.shopImage}}>
         <div class='coffeeShopInfo'>
           <h1 class="coffeeShopName">{{shop.name}}</h1>
           <p class='coffeeShopAddress'>{{shop.formatted_address}}
@@ -32,8 +32,12 @@
                  <input ng-click='addNewAppointment(shop.id, shop)' type="submit" value="Submit">
               </form>
             </div>
-            <div class="appointment">
-              <button class='meetupButton'>join</button>
+
+            <div ng-repeat="appt in appointmentList">
+              <div class="appointment">
+                <p>{{appt.day}}</p>
+                <button class='meetupButton'>join</button>
+              </div>
             </div>
         </div>
 
