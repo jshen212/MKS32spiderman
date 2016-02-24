@@ -2,7 +2,7 @@ var express     = require('express');
 var mongojs     = require('mongojs');
 var bodyParser     = require('body-parser');
 var partial = require('express-partials');
-var db     = mongojs('brewfortwo', ['users']);
+var db     = mongojs('brewfortwo', ['users', 'appointments']);
 var jwt = require('jwt-simple');
 
 // initiates express
@@ -22,21 +22,31 @@ app.use(bodyParser.json());
 
 
 // handles post requests to appointments path
-app.post('/appointments', function(req, res){
+app.post('/createAppointment', function(req, res){
   // TODO: Get submitter's ID. Place it in appointments table.
-  // db.appointments.insert(req.body, function(err, doc){
-  //   res.send('/bulletin');
-  // });
+  var token = req.body.host_id;
+  var secret = "brewed";
+  var decoded = jwt.decode(token, secret);
+  // console.log("++line 30 in server.js, decoded is: ", decoded);
+  req.body.email = decoded.email;
 
-  console.log('line31++ server.js', req.body);
-  if(req.body){
+  db.appointments.insert(req.body, function(err, doc){
     res.send(true);
-  } else {
-    res.send(false);
-  }
-
-
+  });
 });
+
+app.post('/getAppointments', function(req, res){
+  var shopId = {
+    id: req.body.id
+  };
+  // console.log(req.body);
+  db.appointments.find(shopId, function(err, appts){
+    // console.log('++line 44 server.js appts = ', appts);
+    res.send(appts);
+  });
+});
+
+
 
 // TODO: Setup user appointment update requests.
 // app.put('/bulletin')
