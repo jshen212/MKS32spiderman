@@ -18,6 +18,15 @@
   text-shadow: 2px 2px 2px #BF2415;
 }
 
+body{
+  background-image: url('http://blog.uvm.edu/sthaxter/files/2015/12/Screen-Shot-2015-12-08-at-3.40.26-PM.png');
+  background-size: stretch;
+  height: auto;
+  background-repeat: no-repeat;
+}
+.login-form {
+  background-color: rgba(255,255,255,0.75);
+}
 .login-logo {
   font-size: 4em;
   font-family: 'Kaushan Script', sans-serif;
