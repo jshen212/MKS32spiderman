@@ -32,14 +32,14 @@
         </thead>
 
         <tbody>
-          <tr ng-repeat='confirmAppt in confirmed'>
+          <tr ng-repeat="confirmAppt in confirmed">
             <td>guest first</td>
             <td>guest last</td>
             <td>location</td>
             <td>day</td>
             <td>time</td>
-            <td><button class="btn btn-primary">Accept</button></td>
-            <td><button class="btn btn-danger">Deny</button></td>
+            <td><button class="btn btn-primary" ng-click="accept()">Accept</button></td>
+            <td><button class="btn btn-danger" ng-click="deny()">Deny</button></td>
           </tr>
         </tbody>
       </table>
@@ -68,8 +68,8 @@
             <td>{{hostAppt.shop.formatted_address}}</td>
             <td>{{hostAppt.day}}</td>
             <td>{{hostAppt.time}}</td>
-            <td><button class="btn btn-primary">Accept</button></td>
-            <td><button class="btn btn-danger">Deny</button></td>
+            <td><button class="btn btn-primary" ng-click="accept()">Accept</button></td>
+            <td><button class="btn btn-danger" ng-click="deny()">Deny</button></td>
           </tr>
         </tbody>
       </table>
@@ -94,15 +94,15 @@
       </thead>
 
       <tbody>
-        <tr ng-repeat='requestAppt in requested'>
+        <tr ng-repeat="requestAppt in requested">
           <td>{{requestAppt.firstName}}</td>
           <td>{{requestAppt.lastName}}</td>
           <td>{{requestAppt.shop.name}}</td>
           <td>{{requestAppt.shop.formatted_address}}</td>
           <td>{{requestAppt.day}}</td>
           <td>{{requestAppt.time}}</td>
-          <td><button class="btn btn-primary">Accept</button></td>
-          <td><button class="btn btn-danger">Deny</button></td>
+          <td><button class="btn btn-primary" ng-click="accept()">Accept</button></td>
+          <td><button class="btn btn-danger" ng-click="deny()">Deny</button></td>
         </tr>
       </tbody>
     </table>
