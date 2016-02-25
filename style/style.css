@@ -1,6 +1,7 @@
 .header {
   background-color: #e74c3c;
   width: 100%;
+  height: 3em;
   position: fixed;
   top: 0;
   z-index: 2;
@@ -8,15 +9,33 @@
 
 .header a {
   color: white;
+  text-decoration: none;
+  padding: 25px;
 }
+
 
 .logo {
   font-size: 2em;
   font-family: 'Kaushan Script', sans-serif;
   color: #e74c3c;
   margin-bottom: -5px;
+  margin-left: -50px;
   text-shadow: 2px 2px 2px #BF2415;
 }
+
+.links {
+  margin-top: 5px;
+  margin-bottom: -5px;
+  padding: .3em;
+  margin-right: 10px;
+  border: 1px solid white;
+  font-size: 1em;
+  list-style: none;
+  box-shadow: 2px 2px 2px #BF2415;
+}
+/*.logo a:hover {
+  background-color: #e74c3c;
+}*/
 
 body{
   background-color: lightgrey;
@@ -51,13 +70,6 @@ body{
   text-decoration: none;
 }
 
-.links {
-  margin-top: 5px;
-  margin-bottom: -5px;
-  margin-right: 10px;
-  border: 1px solid white;
-  font-size: 1em;
-}
 
 /*.login {
   background-image: url("http://cdn1.tnwcdn.com/wp-content/blogs.dir/1/files/2015/09/Screen-Shot-2015-09-11-at-3.43.50-PM.png");
@@ -66,7 +78,7 @@ body{
 
 #map {
   display: block;
-  position:absolute;
+  position: absolute;
   height:auto;
   bottom:0;
   top:0;
@@ -75,7 +87,7 @@ body{
 }
 
 .cafeList {
-  top: 55px;
+  top: 42px;
   height: 94.5%;
   width: 40%;
   background-color: rgba(255,255,255,0.5);
@@ -97,11 +109,15 @@ body{
   border-bottom: 2px solid #e74c3c;
 }
 
+.cafePreviewClick {
+  height: 120px;
+}
+
 .coffeeShopImage {
   height: 120px;
   width: 150px;
   margin-right: 10px;
-  padding: 5px 5px 5px 5px;
+  padding: 10px 10px;;
   object-fit: cover;
   float: left;
 }
@@ -110,6 +126,8 @@ body{
   padding-top: 5px;
   margin-top: 2px;
   margin-left: 5px;
+  width: 400px;
+  height: 100%;
 }
 
 .coffeeShopName {
@@ -121,6 +139,8 @@ body{
 .coffeeShopAddress {
   /*float: left;*/
   margin-top: -8px;
+  line-height: normal;
+  font-size: .8em;
 }
 
 /***************** Appointments ********************/
@@ -128,7 +148,7 @@ body{
 .appointmentsDashboard {
   height: 400px;
   width: 100%;
-  margin-top: 4.2em;
+  /*margin-top: 1em;*/
   overflow: scroll;
   border-top: 1px solid darkgrey;
 }
@@ -153,7 +173,7 @@ body{
 .addAppointmentButton {
   right: 0;
   /*top: 0;*/
-  /*float: right;*/
+  float: right;
 }
 
 .addNewAppointmentForm {

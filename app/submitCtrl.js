@@ -51,6 +51,8 @@ angular.module('signup', [])
     });
   };
 
+  // $scope.filterAppointments();
+
 // fetches all appointments to display on the "appointments" page
   $scope.fetchAllAppointmentsForUser = function (token) {
     $http.get('/fetchAppointmentsDashboardData').success(function(res){

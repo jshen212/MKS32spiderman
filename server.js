@@ -87,7 +87,6 @@ app.post('/sendJoinRequest', function(req, res){
   var secret = "brewed";
   var email = jwt.decode(currentUserId, secret).email;
   var appointment = req.body.appointment;
-
   db.appointments.update({time: appointment.time}, { $set: { appointmentStatus: 'pending' }, $push: { guests: email } }, function(err, appt){
   });
 });
