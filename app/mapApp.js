@@ -53,7 +53,6 @@ angular.module('mapsApp', [])
       for (var i = 0; i < results.length; i++) {
         createMarker(results[i]);
         if(results[i].photos){
-          console.log(results[i]);
           results[i]. shopImage = results[i].photos[0].getUrl({'maxWidth': 500, 'maxHeight': 500});
         }else{
           results[i]. shopImage = results[i].icon;
