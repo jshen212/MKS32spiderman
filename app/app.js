@@ -70,7 +70,7 @@ app.controller('cafeListCtrl', ['$scope', '$http', '$window', '$location', funct
 
 
 
-app.config(['$routeProvider', '$httpProvider', function($routeProvider, $httpProvider){
+app.config(['$routeProvider', '$httpProvider', function($routeProvider){
   $routeProvider
 
   .when('/home', {
@@ -101,7 +101,7 @@ app.config(['$routeProvider', '$httpProvider', function($routeProvider, $httpPro
 
 .factory('Auth', function ($http, $location, $window) {
   var isAuth = function () {
-    return !!$window.localStorage.getItem('com.brewed');
+    return Boolean($window.localStorage.getItem('com.brewed'));
   };
 
   return {

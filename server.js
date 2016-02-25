@@ -6,7 +6,7 @@ var jwt = require('jwt-simple');
 var _ = require('underscore');
 
 // mongo database (database name = brewfortwo, tables = users, appointments)
-var db     = mongojs('brewfortwo', ['users', 'appointments']);
+var db = mongojs('brewfortwo', ['users', 'appointments']);
 var app = express();
 
 app.use(express.static(__dirname+'/'));
@@ -88,7 +88,6 @@ app.post('/sendJoinRequest', function(req, res){
   var appointment = req.body.appointment;
 
   db.appointments.update({time: appointment.time}, { $set: { appointmentStatus: 'pending' }, $push: { guests: email } }, function(err, appt){
-    console.log('++line 71: ', appt);
   });
 });
 

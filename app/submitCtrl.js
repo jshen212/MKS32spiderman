@@ -3,7 +3,6 @@ angular.module('signup', [])
 
 // authenticates by checking if there is a token
   $scope.isAuth = function(){
-    console.log(Boolean($window.localStorage.getItem('com.brewed')));
     return Boolean($window.localStorage.getItem('com.brewed'));
   };
 
