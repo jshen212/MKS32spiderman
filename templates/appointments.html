@@ -1,10 +1,9 @@
 <!-- nav bar links  -->
 <ul class="nav nav-pills pull-left">
   <li class='logo'><a href="#/home">Brew4Two</a></li>
-  <li ><a href="#/signin">Sign In</a></li>
   <li ><a href="#/home">Landing Page</a></li>
   <li ><a href="#/appointments">My Appointments</a></li>
-  <li ><a href="#" ng-click='signout()'>logout</a></li>
+  <li ><a href="#" ng-click='signout()' ng-show='isAuth()'>logout</a></li>
 </ul>
 
 <!-- page header -->
