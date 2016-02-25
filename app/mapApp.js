@@ -1,60 +1,11 @@
 angular.module('mapsApp', [])
-.controller('MapCtrl', function ($scope, MapHelpers) {
-  MapHelpers.initMap();
-  $scope.coffeeShops = [];
+.controller('MapCtrl', function ($scope) {
+    //VARIABLES USED IN FUNCTIONS
+    var map;
+    var infowindow;
+    var coffeeShops = [];
+    $scope.coffeeShops = [];
 
-  // wait for coffee shops to populate.
-  setTimeout(function(){
-    for(var i = 0; i < MapHelpers.coffeeShops.length; i++){
-      MapHelpers.coffeeShops[i].shopImage = MapHelpers.coffeeShops[i].photos[0].getUrl({'maxWidth': 500, 'maxHeight': 500});
-      // MapHelpers.coffeeShops[i].open = false;
-      $scope.coffeeShops.push(MapHelpers.coffeeShops[i]);
-    }
-    // without digest, ng-repeat will not be able to read the updated coffeeShops array on the scope
-    $scope.$digest();
-    console.log('!!Line 7: ', $scope.coffeeShops);
-  }, 1150);
-
-})
-.factory('MapHelpers', function(){
-
-  var map;
-  var infowindow;
-  var coffeeShops = [];
-
-  function initMap(lat, lng) {
-    lat = lat || 34.0219;
-    lng = lng || -118.4814;
-    var santaMonica = {lat: lat, lng: lng};
-
-
-    map = new google.maps.Map(document.getElementById('map'), {
-      center: santaMonica,
-      zoom: 14
-    });
-
-    // getUserCurrentLocation(map);
-
-    infowindow = new google.maps.InfoWindow();
-
-    var service = new google.maps.places.PlacesService(map);
-    service.textSearch({
-      location: santaMonica,
-      radius: 2000,
-      types: ['cafe', 'restaurant', 'food', 'store', 'establishment', 'meal_takeaway', 'point_of_interest'],
-      query: ['coffee']
-    }, callback);
-  }
-
-  function callback(results, status) {
-    if (status === google.maps.places.PlacesServiceStatus.OK) {
-      for (var i = 0; i < results.length; i++) {
-        createMarker(results[i]);
-      }
-      coffeeShops = results;
-      // console.log('++line42', coffeeShops);
-    }
-  }
 
   function createMarker(place) {
 
@@ -90,49 +41,100 @@ angular.module('mapsApp', [])
     if(place.photos !== undefined){
       coffeeShops.push(place);
     }
-    // console.log('++line 58', coffeeShops);
-  }
+  };
 
+  function addShopsToScope(results){
+    console.log('in addShopsToScope');
+    for(var i = 0; i < results.length; i++){
+        results[i].shopImage = results[i].photos[0].getUrl({'maxWidth': 500, 'maxHeight': 500});
+        // MapHelpers.coffeeShops[i].open = false;
+        $scope.coffeeShops.push(results[i]);
+      }
+      // without digest, ng-repeat will not be able to read the updated coffeeShops array on the scope
+      $scope.$digest();
+    // wait for coffee shops to populate.
+  };
 
-  /** OUR CODE **/
+  function callback(results, status) {
+    if (status === google.maps.places.PlacesServiceStatus.OK) {
+      for (var i = 0; i < results.length; i++) {
+        createMarker(results[i]);
+        results[i]. shopImage = results[i].photos[0].getUrl({'maxWidth': 500, 'maxHeight': 500});
+        $scope.coffeeShops.push(results[i]);
+        $scope.$apply();
 
-  function getUserCurrentLocation (map) {
-     var infoWindow = new google.maps.InfoWindow({map: map});
-     var userCurrentLocation;
+      }
+    }
+  };
 
+  function initMap() {
     if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function(position) {
-          var pos = {
-            lat: position.coords.latitude,
-            lng: position.coords.longitude
-          };
+      var thislat;
+      var thislng;
+      navigator.geolocation.getCurrentPosition(function(position) {
+        thislat = position.coords.latitude;
+        thislng = position.coords.longitude;
 
-          // userCurrentLocation = pos;
-          // console.log(pos);
-          infoWindow.setPosition(pos);
-          infoWindow.setContent('Current location.');
-          map.setCenter(pos);
+        if(thislat === undefined){
+          thislat = 34.0219;
+        }
+        if(thislng === undefined){
+          thislng = -118.4814;
+        }
 
-        }, function() {
-          handleLocationError(true, infoWindow, map.getCenter());
-
+        var santaMonica = {lat: thislat, lng: thislng};
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: santaMonica,
+          zoom: 14
         });
-      } else {
-        // Browser doesn't support Geolocation
-        handleLocationError(false, infoWindow, map.getCenter());
+
+        infowindow = new google.maps.InfoWindow();
+
+        var service = new google.maps.places.PlacesService(map);
+        service.textSearch({
+          location: santaMonica,
+          radius: 3000,
+          types: ['cafe', 'restaurant', 'food', 'store', 'establishment', 'meal_takeaway', 'point_of_interest'],
+          query: ['coffee']
+        }, callback);
+
+        // userCurrentLocation = pos;
+        // console.log(pos);
+
+      }, function() {
+          console.log('error!');
+          console.log('info');
+      });
+    } else {
+      var thislat = 43.8833;
+      var thislng = -79.2500;
+
+      var santaMonica = {lat: thislat, lng: thislng};
+
+      map = new google.maps.Map(document.getElementById('map'), {
+        center: santaMonica,
+        zoom: 14
+      });
+
+      // getUserCurrentLocation(map);
+
+      infowindow = new google.maps.InfoWindow();
+
+      var service = new google.maps.places.PlacesService(map);
+      service.textSearch({
+        location: santaMonica,
+        radius: 3000,
+        types: ['cafe', 'restaurant', 'food', 'store', 'establishment', 'meal_takeaway', 'point_of_interest'],
+        query: ['coffee']
+      }, callback);
       }
+  };
 
-      function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-        infoWindow.setPosition(pos);
-        infoWindow.setContent(browserHasGeolocation ?
-                              'Error: The Geolocation service failed.' :
-                              'Error: Your browser doesn\'t support geolocation.');
-      }
-
-      // console.log(userCurrentLocation);
-  }
+  initMap();
+});
 
 
+  /* CHANGING MAP CENTER WHEN MOVED */
   // function returnLocation () {
   //   if (navigator.geolocation) {
   //       navigator.geolocation.getCurrentPosition(function(position) {
@@ -159,16 +161,6 @@ angular.module('mapsApp', [])
   //
   // }
 
-
-  return {
-    getUserCurrentLocation: getUserCurrentLocation,
-    initMap: initMap,
-    coffeeShops: coffeeShops
-  };
-    // centerMapOnWindowResize: centerMapOnWindowResize,
-    // returnLocation: returnLocation
-
-});
 
 
 
