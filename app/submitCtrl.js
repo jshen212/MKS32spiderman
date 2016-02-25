@@ -10,6 +10,7 @@ angular.module('signup', [])
     $http.post('/signup', $scope.newUser).success(function(response){
       $location.path('/signin');
     });
+
   };
 
   $scope.signin = function(){
