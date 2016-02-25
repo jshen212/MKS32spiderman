@@ -76,6 +76,7 @@ app.post('/filterAppointments', function(req, res){
       }
     }
 
+    console.log(filteredAppointments);
     res.send(filteredAppointments);
   });
 });
