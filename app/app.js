@@ -6,7 +6,7 @@ var app = angular.module('app', [
 
 app.controller('cafeListCtrl', ['$scope', '$http', '$window', '$location', function($scope, $http, $window, $location){
   $scope.newAppointment = {};
-  // $scope.appointmentList;
+  $scope.appointmentList;
 
   $scope.selected = false;
   $scope.toggleCoffeeShopAppointments = function(shopId){
@@ -38,24 +38,56 @@ app.controller('cafeListCtrl', ['$scope', '$http', '$window', '$location', funct
     }
 
     else {
+      // from home.html:
       $scope.newAppointment.id = shopId;
       $scope.newAppointment.shop = shop;
+      // console.log('++line44, username: ', $scope.newUser.first);
+      // from $window
       $scope.newAppointment.host_id = hostId;
       $scope.newAppointment.guest_id = null;
-      console.log('++line 26, token: ', $window.localStorage.getItem('com.brewed'));
-      // shopId
-      // day
-      // time
-      // host user
-      console.log('++newAppointmentId: ', $scope.newAppointment.id);
-      console.log('++newAppointment object: ', $scope.newAppointment);
+      $scope.newAppointment.firstName;
+      $scope.newAppointment.lastName;
+      $scope.newAppointment.guests = [];
+      $scope.newAppointment.appointmentStatus = null;
+      // console.log('++line 26, token: ', $window.localStorage.getItem('com.brewed'));
+      // console.log('++newAppointmentId: ', $scope.newAppointment.id);
+      // console.log('++newAppointment object: ', $scope.newAppointment);
 
       $http.post('/createAppointment', $scope.newAppointment).success(function(req, res){
-        console.log('sent to server: ', $scope.newAppointment);
+        // console.log('sent to server: ', $scope.newAppointment);
+        $scope.newAppointment.firstName = res.firstName;
+        $scope.newAppointment.firstName = res.lastName;
       });
+
     }
   };
+
+  $scope.requestToJoin = function(thisAppointment) {
+    var hostId = $window.localStorage.getItem('com.brewed');
+
+    swal({
+      title: "Are you sure you want to join this appointment?",
+      // text: "You will not be able to recover this imaginary file!",
+      type: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "forestgreen",
+      confirmButtonText: "Yes!",
+      closeOnConfirm: false
+    }, function(){
+          console.log('++line76 appointmentList for this cafe: ', $scope.appointmentList);
+         swal("Request sent!", "The host of this appointment has recieved your request to join. Check your appointments page to see if they accepted!", "success");
+         $http.post('/sendJoinRequest', { token: hostId, appointment: $scope.appointmentList[thisAppointment] }).success(function(req, res){
+           console.log('++line 76 app.js: a request should be sent to the server now');
+         });
+      });
+
+
+  };
+
+
 }]);
+
+
 
 app.config(['$routeProvider', '$httpProvider', function($routeProvider, $httpProvider){
   $routeProvider

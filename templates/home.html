@@ -35,8 +35,11 @@
 
             <div ng-repeat="appt in appointmentList">
               <div class="appointment">
-                <p>{{appt.day}}</p>
-                <button class='meetupButton'>join</button>
+                <button class='meetupButton' ng-click="requestToJoin($index)">join</button>
+                <div class="appointmentData">
+                  <p>{{appt.day}} {{appt.time}}</p>
+                  <p>{{appt.firstName}} {{appt.lastName}}</p>
+                </div>
               </div>
             </div>
         </div>

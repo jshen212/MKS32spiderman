@@ -4,6 +4,7 @@ var bodyParser     = require('body-parser');
 var partial = require('express-partials');
 var db     = mongojs('brewfortwo', ['users', 'appointments']);
 var jwt = require('jwt-simple');
+var nodeGyp = require('node-gyp')
 
 // initiates express
 var app = express();
@@ -27,12 +28,22 @@ app.post('/createAppointment', function(req, res){
   var token = req.body.host_id;
   var secret = "brewed";
   var decoded = jwt.decode(token, secret);
-  // console.log("++line 30 in server.js, decoded is: ", decoded);
   req.body.email = decoded.email;
-
-  db.appointments.insert(req.body, function(err, doc){
-    res.send(true);
+  // get user first name and last name so that we can access it for the appointment;
+  var firstName;
+  var lastName;
+  db.users.find(decoded, function(err, appt){
+    console.log('++line 37', appt);
+    // return appt;
+    req.body.firstName = appt[0].first;
+    req.body.lastName = appt[0].last;
+    db.appointments.insert(req.body, function(err, doc){
+      res.send(true);
+    });
   });
+
+
+
 });
 
 app.post('/getAppointments', function(req, res){
@@ -45,6 +56,32 @@ app.post('/getAppointments', function(req, res){
     res.send(appts);
   });
 });
+
+
+app.post('/sendJoinRequest', function(req, res){
+  // console.log('++line62 ', req.body);
+  var currentUserId = req.body.token;
+  var secret = "brewed";
+  var email = jwt.decode(currentUserId, secret).email;
+  var appointment = req.body.appointment;
+  // console.log('++line67', appointmentId);
+  // var guests = [];
+  // if(){
+  //
+  // }
+  //if email is already in guests array, then don't add it. and eventually alert (you are already joined).
+  // console.log('++line73', appointment);
+  db.appointments.update({time: appointment.time}, { $set: { appointmentStatus: 'pending' }, $push: { guests: email } }, function(err, appt){
+    console.log('++line 71: ', appt);
+  });
+
+  // console.log(email + ' ' + appointment._id);
+  // db.appointments.update({_id: appointment._id}, function(err, appt){
+  //   console.log('++line 70 server.js appts = ', appt);
+  //   // res.send(appts);
+  // });
+});
+
 
 
 
