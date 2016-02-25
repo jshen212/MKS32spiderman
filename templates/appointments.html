@@ -1,3 +1,4 @@
+<!-- nav bar links  -->
 <ul class="nav nav-pills pull-left">
   <li class='logo'><a href="#/home">Brew4Two</a></li>
   <li ><a href="#/signin">Sign In</a></li>
@@ -5,22 +6,35 @@
   <li ><a href="#/appointments">My Appointments</a></li>
   <li ><a href="#" ng-click='signout()'>logout</a></li>
 </ul>
+
+<!-- page header -->
 <h1>Appointments</h1>
-<button ng-click="filterAppointments()">appointments</button>
+
+<!-- click event fetches ALL appointments and filters out appts specific to user in the controller -->
+<button ng-click="filterAppointments()">Appointments</button>
 
 <div  ng-app="signup" ng-contoller="submitCtrl">
+
+  <!-- loop over confirmed appointments (appts that user is either the host or guest and both parties have confirmed) -->
   <h1>confirmed</h1>
   <div>
     <div>
-      <h3></h3>
+      <h3>
+        <!-- TODO: create ng-repeat handlebars -->
+        <!-- {{}} -->
+      </h3>
     </div>
   </div>
+
+  <!-- // loop over hosted appointments (appts that user has created) -->
   <h1>hosting</h1>
   <div ng-repeat="hostAppt in hosting">
     <div>
-      <h3>{{hostAppt.time}}</h3>
+      <h3>{{hostAppt.day}}</h3>
     </div>
   </div>
+
+  <!-- // loop over requested appointments (appts that user has requested to join but is not hosting) -->
   <h1 >requested</h1>
   <div ng-repeat='requestAppt in requested'>
     <div>
