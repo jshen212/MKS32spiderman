@@ -57,6 +57,7 @@ app.controller('cafeListCtrl', ['$scope', '$http', '$window', '$location', funct
         // console.log('sent to server: ', $scope.newAppointment);
         $scope.newAppointment.firstName = res.firstName;
         $scope.newAppointment.firstName = res.lastName;
+
       });
 
     }
@@ -80,9 +81,9 @@ app.controller('cafeListCtrl', ['$scope', '$http', '$window', '$location', funct
            console.log('++line 76 app.js: a request should be sent to the server now');
          });
       });
-
-
   };
+
+
 
 
 }]);
