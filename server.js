@@ -4,7 +4,8 @@ var bodyParser     = require('body-parser');
 var partial = require('express-partials');
 var db     = mongojs('brewfortwo', ['users', 'appointments']);
 var jwt = require('jwt-simple');
-var nodeGyp = require('node-gyp')
+var _ = require('underscore');
+var nodeGyp = require('node-gyp');
 
 // initiates express
 var app = express();
@@ -57,6 +58,36 @@ app.post('/getAppointments', function(req, res){
   });
 });
 
+app.post('/filterAppointments', function(req, res){
+  var currentUserId = req.body.token;
+  var secret = "brewed";
+  var email = jwt.decode(currentUserId, secret).email;
+  var filteredAppointments = {
+    confirmed: [],
+    hosting: [],
+    requested: []
+  };
+
+  db.appointments.find({}, function(err, doc){
+    for( var i = 0; i < doc.length; i++ ){
+      if ( (doc[i].email === email || _.contains(doc[i].guests, email) === true ) && doc[i].appointmentStatus === 'scheduled'){
+        filteredAppointments.confirmed.push(doc[i]);
+      }
+
+      if(doc[i].email === email){
+        filteredAppointments.hosting.push(doc[i]);
+      }
+
+      if(doc[i].email !== email && _.contains(doc[i].guests, email) === true && doc[i].appointmentStatus === 'pending'){
+        filteredAppointments.requested.push(doc[i]);
+        console.log('we got another requested item!! BNABYYYY')
+      }
+    }
+    console.log('++line85', filteredAppointments.requested);
+
+    res.send(filteredAppointments);
+  })
+});
 
 app.post('/sendJoinRequest', function(req, res){
   // console.log('++line62 ', req.body);
@@ -82,8 +113,15 @@ app.post('/sendJoinRequest', function(req, res){
   // });
 });
 
+app.get('/fetchAppointmentsDashboardData', function(req, res){
+  db.appointments.find({}, function(err, appts){
+    var allAppointments = appts;
+    var filteredAppointments = {};
+    //get user id
+    res.send(appts);
+  });
 
-
+});
 
 // TODO: Setup user appointment update requests.
 // app.put('/bulletin')
@@ -132,6 +170,15 @@ app.post('/signin', function(req, res){
     }
   });
 });
+
+
+
+
+
+
+
+
+
 
 // sets up server on the process environment port or port 8000
 app.listen(process.env.PORT || 8000);

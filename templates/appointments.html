@@ -6,18 +6,25 @@
   <li ><a href="#" ng-click='signout()'>logout</a></li>
 </ul>
 <h1>Appointments</h1>
-<h3>Booked Solid</h3>
-  <div class="cafe appointment">Appointment Info</div>
-  <div class="cafe appointment">Appointment Info</div>
-  <div class="cafe appointment">Appointment Info</div>
+<button ng-click="filterAppointments()">appointments</button>
 
-
-<h3>Pending...</h3>
-
-
-  <div class="cafe appointment">Appointment Info</div>
-  <div class="cafe appointment">Appointment Info</div>
-  <div class="cafe appointment">Appointment Info</div>
-  <div class="cafe appointment">Appointment Info</div>
-  <div class="cafe appointment">Appointment Info</div>
-  <div class="cafe appointment">Appointment Info</div>
+<div  ng-app="signup" ng-contoller="submitCtrl">
+  <h1>confirmed</h1>
+  <div>
+    <div>
+      <h3></h3>
+    </div>
+  </div>
+  <h1>hosting</h1>
+  <div ng-repeat="hostAppt in hosting">
+    <div>
+      <h3>{{hostAppt.time}}</h3>
+    </div>
+  </div>
+  <h1 >requested</h1>
+  <div ng-repeat='requestAppt in requested'>
+    <div>
+      <h3>{{requestAppt.time}}</h3>
+    </div>
+  </div>
+</div>
