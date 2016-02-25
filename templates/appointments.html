@@ -1,14 +1,16 @@
 <!-- nav bar links  -->
-<ul class="nav nav-pills pull-left">
-  <li class='logo'><a href="#/home">Brew4Two</a></li>
-  <li ><a href="#/home">Landing Page</a></li>
-  <li ><a href="#/appointments">My Appointments</a></li>
-  <li ><a href="#" ng-click='signout()' ng-show='isAuth()'>logout</a></li>
+<ul class="header">
+  <li class='logo pull-left'><a href="#/home">Brew4Two <span class="fa fa-coffee"></span></a></li>
+  <li class="pull-right links" ng-show='!isAuth()'><a href="#/signin">login</a></li>
+  <li class="pull-right links" ng-show='isAuth()'><a href="#" ng-click='signout()'>logout</a></li>
+  <li class="pull-right links"><a href="#/appointments"> appointments</a></li>
 </ul>
 
 <!-- page header -->
 <!-- page load fetches ALL appointments and filters out appts specific to user in the controller -->
 <h1 ng-init="filterAppointments()">Appointments</h1>
+
+
 
 
 
