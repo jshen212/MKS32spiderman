@@ -25,10 +25,14 @@ angular.module('mapsApp', [])
       photo = place.icon;
     }
 
-    if(place.opening_hours.open_now) {
-      openNow = 'Open';
-    } else {
-      openNow = 'Closed';
+    if(place.opening_hours){
+      if(place.opening_hours.open_now) {
+        openNow = 'Open';
+      } else {
+        openNow = 'Closed';
+      }
+    }else{
+      openNow = 'Unsure';
     }
 
     var content = '<img src="'+photo+'">' + '<h2>' + place.name + '</h2>'+ '<p>' + place.formatted_address + '</p>' + '<p class="opening-hours">' + openNow + '</p>' + '<p>' + 'Rating: ' + place.rating + '</p>';
@@ -43,23 +47,16 @@ angular.module('mapsApp', [])
     }
   };
 
-  function addShopsToScope(results){
-    console.log('in addShopsToScope');
-    for(var i = 0; i < results.length; i++){
-        results[i].shopImage = results[i].photos[0].getUrl({'maxWidth': 500, 'maxHeight': 500});
-        // MapHelpers.coffeeShops[i].open = false;
-        $scope.coffeeShops.push(results[i]);
-      }
-      // without digest, ng-repeat will not be able to read the updated coffeeShops array on the scope
-      $scope.$digest();
-    // wait for coffee shops to populate.
-  };
-
   function callback(results, status) {
     if (status === google.maps.places.PlacesServiceStatus.OK) {
+      //looping through results
       for (var i = 0; i < results.length; i++) {
         createMarker(results[i]);
-        results[i]. shopImage = results[i].photos[0].getUrl({'maxWidth': 500, 'maxHeight': 500});
+        if(results[i].photos){
+          results[i]. shopImage = results[i].photos[0].getUrl({'maxWidth': 500, 'maxHeight': 500});
+        }else{
+          results[i]. shopImage = results[i].icon;
+        }
         $scope.coffeeShops.push(results[i]);
         $scope.$apply();
 
@@ -82,7 +79,11 @@ angular.module('mapsApp', [])
           thislng = -118.4814;
         }
 
+        // thislat = 43.8833;
+        // thislng = -79.2500;
+
         var santaMonica = {lat: thislat, lng: thislng};
+        santaMonica.lng = santaMonica.lng - .024;
         map = new google.maps.Map(document.getElementById('map'), {
           center: santaMonica,
           zoom: 14
@@ -93,7 +94,7 @@ angular.module('mapsApp', [])
         var service = new google.maps.places.PlacesService(map);
         service.textSearch({
           location: santaMonica,
-          radius: 3000,
+          radius: 2000,
           types: ['cafe', 'restaurant', 'food', 'store', 'establishment', 'meal_takeaway', 'point_of_interest'],
           query: ['coffee']
         }, callback);
@@ -121,6 +122,7 @@ angular.module('mapsApp', [])
       infowindow = new google.maps.InfoWindow();
 
       var service = new google.maps.places.PlacesService(map);
+
       service.textSearch({
         location: santaMonica,
         radius: 3000,
