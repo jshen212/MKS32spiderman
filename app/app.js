@@ -77,7 +77,7 @@ app.controller('cafeListCtrl', ['$scope', '$http', '$window', '$location', funct
     var hostId = $window.localStorage.getItem('com.brewed');
 
     swal({
-      title: "Are you sure you want to join this appointment?",
+      title: "Are you sure you want to join?",
       type: "",
       showCancelButton: true,
       confirmButtonColor: "forestgreen",
@@ -85,7 +85,7 @@ app.controller('cafeListCtrl', ['$scope', '$http', '$window', '$location', funct
       closeOnConfirm: false
     }, function(){
       console.log('++line76 appointmentList for this cafe: ', $scope.appointmentList);
-      swal("Request sent!", "The host of this appointment has recieved your request to join. Check your appointments page to see if they accepted!", "success");
+      swal("Request sent!", "The host has recieved your request.", "success");
       $http.post('/sendJoinRequest', { token: hostId, appointment: $scope.appointmentList[thisAppointment] }).success(function(req, res){
         console.log('++line 76 app.js: a request should be sent to the server now');
       });

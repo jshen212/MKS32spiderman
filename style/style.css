@@ -210,9 +210,18 @@ body{
   margin: 10px 10%;
   background-color: white;
   box-shadow: 2px 2px 2px lightgrey;
-
+  border-radius: 3px;
   /*z-index: 1;*/
 }
+
+.appointmentData {
+  padding: 10px;
+}
+
+.appointmentData, p {
+  line-height: .5em;
+}
+
 
 .addAppointmentButton {
   right: 0;

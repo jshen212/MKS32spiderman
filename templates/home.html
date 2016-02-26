@@ -24,6 +24,7 @@
               <div ng-show='selected' class="appointmentsDashboard" >
                 <h3 class='appointmentsTitle'>Appointments</h3>
                 <div ng-if="creatingAppointment" class="addNewAppointmentForm">
+                  <!-- BUG BUG DATE PICKER DISAPPEARS AFTER SUBMITTING AND CLICKING CREATE NEW AGAIN-->
                   <button class="createNew" isOpen="false" ng-click="isOpen = !isOpen">+ Create New</button>
                   <form ng-if="isOpen" class="timeDayInput center">
 
