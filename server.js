@@ -61,12 +61,12 @@ app.post('/filterAppointments', function(req, res){
     for( var i = 0; i < doc.length; i++ ){
       // if user's email is in the appointments' "email" property, user is the host
       // case: user is a host or a guest and appointment status is scheduled = confirmed appointment
-      if ( (doc[i].email === email || _.contains(doc[i].guests, email) === true ) && doc[i].appointmentStatus === 'scheduled'){
+      if ( (doc[i].email === email || _.contains(doc[i].guests, email) === true ) && doc[i].appointmentStatus === 'scheduled' || doc[i].acceptedGuest === email){
         filteredAppointments.confirmed.push(doc[i]);
       }
 
       // case: user is the host
-      if(doc[i].email === email){
+      if(doc[i].email === email && doc[i].guests.length >= 0 && doc[i].appointmentStatus !== 'scheduled'){
         filteredAppointments.hosting.push(doc[i]);
       }
 
@@ -80,6 +80,7 @@ app.post('/filterAppointments', function(req, res){
     res.send(filteredAppointments);
   });
 });
+
 
 // creates a request to join an appointment (changes appointment status to "pending" and puts the current user in the appointment's "guest" array)
 app.post('/sendJoinRequest', function(req, res){
@@ -136,6 +137,22 @@ app.post('/signin', function(req, res){
     }
   });
 });
+
+app.post('/acceptAppt', function(req, res){
+  console.log('++line142 server.js', req.body);
+  db.appointments.update({time: req.body.time}, { $set: { appointmentStatus: 'scheduled', guests: [], acceptedGuest: req.body.email }}, function(err, appt){
+    res.send(true);
+  });
+});
+
+app.post('/denyAppt', function(req, res){
+  console.log('++line142 server.js', req.body);
+  db.appointments.update({time: req.body.time}, {appointmentStatus: 'pending'}, { $pullAll: { guests: [req.body.email] } }, function(err, appt){
+    res.send(true);
+  });
+});
+
+
 
 
 // sets up server on the process environment port or port 8000

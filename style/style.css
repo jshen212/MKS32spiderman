@@ -1,16 +1,18 @@
 .header {
-  background-color: #e74c3c;
+  background-color: #F25F5C;
   width: 100%;
   height: 3em;
   position: fixed;
   top: 0;
   z-index: 2;
+  /*box-shadow: 2px 2px 0 #5E5E5E;*/
 }
 
 .header a {
   color: white;
   text-decoration: none;
   padding: 25px;
+  border-radius: 3px;
 }
 
 
@@ -32,6 +34,7 @@
   font-size: 1em;
   list-style: none;
   box-shadow: 2px 2px 2px #BF2415;
+  border-radius: 3px;
 }
 /*.logo a:hover {
   background-color: #e74c3c;
@@ -39,11 +42,11 @@
 
 body{
   background-image: url("http://i1168.photobucket.com/albums/r482/jordanallen98/Screen%20Shot%202016-02-25%20at%202.58.54%20PM_zpsx1moz9vu.png");
+
   background-repeat: no-repeat;
   background-size: cover;
 
 }
-
 
 
 .signup_form {
@@ -57,6 +60,7 @@ body{
 .formcontainer {
 
 }
+
 
 .login-form {
   background-color: rgba(255,255,255,0.75);
@@ -111,6 +115,9 @@ body{
   position:absolute;
   opacity:20%;
   z-index: 1;
+  /*max-width: 500px;*/
+  box-shadow: 2px 2px 2px lightgrey;
+
 }
 
 /************************ CAFE LIST VIEW STYLES **************************************/
@@ -119,6 +126,9 @@ body{
   border-bottom: 1px solid lightgrey;
   margin: 10px 10%;
   background-color: rgba(255,255,255,.75);
+  box-shadow: 2px 2px 2px lightgrey;
+  max-width: 600px;
+  border-radius: 3px;
 }
 
 .cafe:hover {
@@ -133,9 +143,12 @@ body{
   height: 120px;
   width: 150px;
   margin-right: 10px;
-  padding: 10px 10px;;
+  /*padding: 10px 10px;;*/
   object-fit: cover;
   float: left;
+  border: none;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
 }
 
 .coffeeShopInfo {
@@ -150,6 +163,7 @@ body{
   margin-top: 2px;
   font-weight: 200;
   font-size: 1.5em;
+  letter-spacing: 1.5px;
 }
 
 .coffeeShopAddress {
@@ -162,18 +176,42 @@ body{
 /***************** Appointments ********************/
 
 .appointmentsDashboard {
-  height: 400px;
+  height: 550px;
+  max-height: 600px;
   width: 100%;
   /*margin-top: 1em;*/
   overflow: scroll;
   border-top: 1px solid darkgrey;
+  -webkit-transition: 0.1s ease-in all;
+  transition: 0.1s ease-in all;
 }
+
+/*ACCORDION ANIMATION FOR APPOINTMENTS DASHBOARD*/
+
+.appointmentsDashboard.ng-hide-add,
+.appointmentsDashboard.ng-hide-remove {
+  display: block !important;
+  height: 0px;
+}
+.appointmentsDashboard.ng-hide-remove.ng-hide-remove-active {
+  height: 100px;
+}
+.appointmentsDashboard.ng-hide-add {
+  height: 600px;
+}
+.appointmentsDashboard.ng-hide-add.ng-hide-add-active {
+  height: 0;
+}
+
+/* end animation */
+
 .appointmentsTitle {
   position: relative;
   margin: 0 auto;
   margin-top: 10px;
   text-align: center;
   font-weight: 200;
+  letter-spacing: 2px;
 }
 
 .appointment {
@@ -181,10 +219,27 @@ body{
   border-bottom: 1px solid lightgrey;
   margin: 10px 10%;
   background-color: white;
-  box-shadow: 2px 2px 2px darkgrey;
-
+  box-shadow: 2px 2px 2px lightgrey;
+  border-radius: 3px;
   /*z-index: 1;*/
 }
+
+.appointmentData {
+  padding: 10px;
+}
+
+.appointmentData, p {
+  line-height: .5em;
+}
+
+.hostName {
+  padding-bottom: 5px;
+}
+
+.hostDateTime {
+  font-size: .8em;
+}
+
 
 .addAppointmentButton {
   right: 0;
@@ -195,8 +250,78 @@ body{
 .addNewAppointmentForm {
   margin: 10px 10%;
 }
-.timeInput {
-  width: 82%;
+
+
+
+
+/*.day {
+  display: inline-block;
+  box-shadow: 2px 2px 2px lightgrey;
+  border: none;
+  height: 25px;
+}*/
+
+.createNew {
+  background-color: #70C1B3;
+  /*letter-spacing: 1.2px;*/
+  width: 40px;
+  height: 40px;
+  color: white;
+  border: none;
+  padding: 10px;
+  /*position: relative;*/
+  margin: 0 auto;
+  align-items: center;
+  display: block;
+  border-radius: 3px;
+  box-shadow: 2px 2px 2px lightgrey;
+}
+.timeDayInput {
+  /*margin: auto;*/
+  margin: 0 auto;
+  /*margin-left: 1em;*/
+  display: inline-block;
+  /*width: 100%;*/
+  /*align-items: center;*/
+}
+.time {
+  background-color: white;
+  display: inline-block;
+  box-shadow: 2px 2px 2px lightgrey;
+  border: none;
+  border-right: 1px solid lightgrey;
+  height: 25px;
+  /*margin: 10px 10%;*/
+  margin: 0 auto;
+  margin-left: 20px;
+  /*float: left;*/
+  width: 40%;
+}
+
+.day {
+  margin: 10px 10%;
+}
+
+.submitButton {
+  background-color: #50514F;
+  border: none;
+  color: white;
+  box-shadow: 2px 2px 2px lightgrey;
+  height: 25px;
+  width: 50%;
+  /*margin: 10px 5px;*/
+  margin: 0 auto;
+
+  border-radius: 3px;
+  display: inline-block;
+  /*float: left;*/
+}
+
+.timeAndSubmitButtons {
+  margin: 0 auto;
+  display: block;
+  margin-left: 40px;
+  /*margin-left: 200px;*/
 }
 
 /*.addAppointmentButton:hover {
@@ -206,56 +331,69 @@ body{
 /*.addAppointmentButton:active {
   background-color: darkgreen;
 }*/
+.hostName {
+  font-size: 1.5em;
+  font-weight: 200;
+}
 
 .appointmentData {
   /*float: left;*/
   /*display: inline-block;*/
   /*float: left;*/
 }
-.meetupButton {
+.joinButton {
   /*float: right;*/
   /*margin:0;*/
+  letter-spacing: 2px;
   display: inline-block;
   float: right;
   margin-right: 0;
-  height: 25px;
-  width: 50px;
-  background-color: forestgreen;
+  height: 75px;
+  width: 75px;
+  background-color: #70C1B3;
   color: white;
   border: none;
   vertical-align: middle;
   /*overflow: hidden;*/
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+
 }
 
 /***************** MAP INFO WINDOW STYLES**********************/
 .gm-style-iw {
-  overflow: scroll:
-  padding: 0;
-  margin: 0;
+  min-height: 120px;
+  /*border-bottom: 1px solid lightgrey;*/
+  /*margin: 10px 10%;*/
+  /*background-color: rgba(255,255,255,.75);*/
+  /*box-shadow: 2px 2px 2px lightgrey;*/
+  max-width: 300px;
+  border-radius: 3px;
 }
 
 .gm-style-iw img {
+  height: 140px;
+  width: 150px;
+  margin-right: 10px;
+
   object-fit: cover;
-  margin: auto;
-  align: center;
-  height: 125px;
-  width: 100%;
+  float: left;
+  border: none;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
 }
 
 .gm-style-iw h2 {
-  font-size: 1.5em;
-  margin-bottom: 0;
-  margin-top: 0;
-  padding: 5px;
-  font-weight: normal;
-  background-color: rgba(46, 204, 113,1);
-  color: white;
+  margin-top: 2px;
+  font-weight: 400;
+  font-size: 1.3em;
+  /*letter-spacing: 1.5px;*/
 }
 
 .gm-style-iw p {
-  margin-bottom: 0;
-  margin-top: 0;
-  line-height: 1.5em;
+  margin-top: -8px;
+  line-height: normal;
+  font-size: .8em;
 }
 
 .opening-hours {

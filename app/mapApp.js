@@ -1,4 +1,4 @@
-angular.module('mapsApp', [])
+angular.module('mapsApp', ['ui.bootstrap.datetimepicker'])
 .controller('MapCtrl', function ($scope) {
   //VARIABLES USED IN FUNCTIONS
   var map;
@@ -8,17 +8,17 @@ angular.module('mapsApp', [])
   $scope.hasLocation = false;
 
 
-  if(!$scope.hasLocation){
-    swal({
-      title: "You must allow sharing your location for our maps to work",
-      type: "",
-      showCancelButton: true,
-      confirmButtonColor: "forestgreen",
-      confirmButtonText: "OK!",
-      closeOnConfirm: false
-    });
-    hasWarnedAboutLocation = true;
-  }
+  // if(!$scope.hasLocation){
+  //   swal({
+  //     title: "You must allow sharing your location for our maps to work",
+  //     type: "",
+  //     showCancelButton: true,
+  //     confirmButtonColor: "forestgreen",
+  //     confirmButtonText: "OK!",
+  //     closeOnConfirm: false
+  //   });
+  //   hasWarnedAboutLocation = true;
+  // }
 
   function createMarker(place) {
 
@@ -51,7 +51,7 @@ angular.module('mapsApp', [])
 
     google.maps.event.addListener(marker, 'click', function() {
       infowindow.setContent(content);
-      infowindow.open(map, this);
+      infowindow.open(map, marker);
     });
 
     if(place.photos !== undefined){
