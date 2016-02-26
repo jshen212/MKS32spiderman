@@ -2,6 +2,8 @@ var app = angular.module('app', [
   'mapsApp',
   'signup',
   'ngRoute',
+  'ngAnimate',
+  'ui.bootstrap',
   'ui.bootstrap.datetimepicker'
 ]);
 

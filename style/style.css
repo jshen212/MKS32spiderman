@@ -172,7 +172,29 @@ body{
   /*margin-top: 1em;*/
   overflow: scroll;
   border-top: 1px solid darkgrey;
+  -webkit-transition: 0.1s ease-in all;
+  transition: 0.1s ease-in all;
 }
+
+/*ACCORDION ANIMATION FOR APPOINTMENTS DASHBOARD*/
+
+.appointmentsDashboard.ng-hide-add,
+.appointmentsDashboard.ng-hide-remove {
+  display: block !important;
+  height: 0px;
+}
+.appointmentsDashboard.ng-hide-remove.ng-hide-remove-active {
+  height: 100px;
+}
+.appointmentsDashboard.ng-hide-add {
+  height: 600px;
+}
+.appointmentsDashboard.ng-hide-add.ng-hide-add-active {
+  height: 0;
+}
+
+
+
 .appointmentsTitle {
   position: relative;
   margin: 0 auto;
