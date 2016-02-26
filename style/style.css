@@ -11,6 +11,7 @@
   color: white;
   text-decoration: none;
   padding: 25px;
+  border-radius: 3px;
 }
 
 
@@ -32,6 +33,7 @@
   font-size: 1em;
   list-style: none;
   box-shadow: 2px 2px 2px #BF2415;
+  border-radius: 3px;
 }
 /*.logo a:hover {
   background-color: #e74c3c;
