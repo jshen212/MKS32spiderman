@@ -5,7 +5,20 @@ angular.module('mapsApp', [])
   var infowindow;
   var coffeeShops = [];
   $scope.coffeeShops = [];
+  $scope.hasLocation = false;
 
+
+  if(!$scope.hasLocation){
+    swal({
+      title: "You must allow sharing your location for our maps to work",
+      type: "",
+      showCancelButton: true,
+      confirmButtonColor: "forestgreen",
+      confirmButtonText: "OK!",
+      closeOnConfirm: false
+    });
+    hasWarnedAboutLocation = true;
+  }
 
   function createMarker(place) {
 
@@ -34,7 +47,7 @@ angular.module('mapsApp', [])
       openNow = 'Unsure';
     }
 
-    var content = '<img src="'+photo+'">' + '<h2>' + place.name + '</h2>'+ '<p>' + place.formatted_address + '</p>' + '<p class="opening-hours">' + openNow + '</p>' + '<p>' + 'Rating: ' + place.rating + '</p>';
+    var content = '<img class="showhover"src="'+photo+'">' + '<h2>' + place.name + '</h2>'+ '<p>' + place.formatted_address + '</p>' + '<p class="opening-hours">' + openNow + '</p>' + '<p>' + 'Rating: ' + place.rating + '</p>';
 
     google.maps.event.addListener(marker, 'click', function() {
       infowindow.setContent(content);
@@ -63,20 +76,22 @@ angular.module('mapsApp', [])
   }
 
   function initMap() {
+
     if (navigator.geolocation) {
       var thislat;
       var thislng;
       navigator.geolocation.getCurrentPosition(function(position) {
         thislat = position.coords.latitude;
         thislng = position.coords.longitude;
-
+        $scope.hasLocation = true;
         if(thislat === undefined){
-          thislat = 34.0219;
+          thislat = 43.8833;
         }
         if(thislng === undefined){
-          thislng = -118.4814;
+          thislng = -79.2500;
         }
 
+        $scope.noLocation = false;
         var santaMonica = {lat: thislat, lng: thislng};
         santaMonica.lng = santaMonica.lng - '.024';
         map = new google.maps.Map(document.getElementById('map'), {

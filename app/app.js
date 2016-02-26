@@ -4,6 +4,7 @@ var app = angular.module('app', [
   'ngRoute'
 ]);
 
+
 app.controller('cafeListCtrl', ['$scope', '$http', '$window', '$location', function($scope, $http, $window, $location){
   $scope.newAppointment = {};
 
