@@ -3,7 +3,6 @@ var app = angular.module('app', [
   'signup',
   'ngRoute',
   'ngAnimate',
-  'ui.bootstrap',
   'ui.bootstrap.datetimepicker'
 ]);
 
@@ -42,7 +41,20 @@ app.controller('cafeListCtrl', ['$scope', '$http', '$window', '$location', funct
       $scope.newAppointment.guest_id = null;
       $scope.newAppointment.guests = [];
       $scope.newAppointment.appointmentStatus = null;
+      console.log('+line45', $scope.newAppointment.day);
 
+      function formatDateProperly (date) {
+        var date = $scope.newAppointment.day.split('-');
+        var months = { "01": "Jan", "02": "Feb", "03": "Mar", "04": "Apr", "05": "May", "06": "Jun", "07": "Jul", "08": "Aug", "09": "Sept", "10": "Oct", "11": "Nov", "12": "Dec" };
+        console.log(date);
+        var year = date[0];
+        var month = months[date[1]];
+        var day = date[2];
+
+        $scope.newAppointment.day = month + ' ' + day + ', ' + year + ' ';
+        console.log('++line56', $scope.newAppointment.day);
+      }
+      formatDateProperly();
 
       $http.post('/createAppointment', $scope.newAppointment).success(function(req, res){
         $scope.newAppointment.firstName = res.firstName;

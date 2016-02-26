@@ -167,7 +167,8 @@ body{
 /***************** Appointments ********************/
 
 .appointmentsDashboard {
-  height: 600px;
+  height: 550px;
+  max-height: 600px;
   width: 100%;
   /*margin-top: 1em;*/
   overflow: scroll;
@@ -193,7 +194,7 @@ body{
   height: 0;
 }
 
-
+/* end animation */
 
 .appointmentsTitle {
   position: relative;
@@ -222,7 +223,6 @@ body{
 .addNewAppointmentForm {
   margin: 10px 10%;
 }
-
 
 .timeDayInput {
   /*margin: auto;*/
@@ -281,6 +281,10 @@ body{
 /*.addAppointmentButton:active {
   background-color: darkgreen;
 }*/
+.hostName {
+  font-size: 1.5em;
+  font-weight: 200;
+}
 
 .appointmentData {
   /*float: left;*/
