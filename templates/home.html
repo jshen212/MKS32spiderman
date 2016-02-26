@@ -90,7 +90,7 @@
                   </form>
                 </div>
 
-                <div ng-repeat="appt in appointmentList">
+                <div ng-repeat="appt in appointmentList | filter:  {appointmentStatus: statusFilter(appt.appointmentStatus)}">
                   <div class="appointment">
                     <button class='joinButton' ng-click="requestToJoin($index)">join</button>
                     <div class="appointmentData">
