@@ -38,11 +38,24 @@
 }*/
 
 body{
-  background-color: lightgrey;
-  background-size: stretch;
-  height: auto;
+  background-image: url("http://i1168.photobucket.com/albums/r482/jordanallen98/Screen%20Shot%202016-02-25%20at%202.58.54%20PM_zpsx1moz9vu.png");
   background-repeat: no-repeat;
+  background-size: cover;
+
 }
+
+.signup_form {
+  width: 50%;
+  margin: 20px auto;
+  background-color: rgba(255, 255, 255, .7);
+  padding: 50px;
+  border-radius: 30px;
+}
+
+.formcontainer {
+
+}
+
 .login-form {
   background-color: rgba(255,255,255,0.75);
 }
@@ -54,6 +67,7 @@ body{
   /*text-shadow: 2px 2px 2px #BF2415;*/
 }
 .login-buttons {
+  margin-top: 10px;
   background-color: #e74c3c;
   color: white;
 }
