@@ -1,7 +1,8 @@
 var app = angular.module('app', [
   'mapsApp',
   'signup',
-  'ngRoute'
+  'ngRoute',
+  'ui.bootstrap.datetimepicker'
 ]);
 
 app.controller('cafeListCtrl', ['$scope', '$http', '$window', '$location', function($scope, $http, $window, $location){

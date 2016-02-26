@@ -39,10 +39,12 @@
 
 body{
   background-image: url("http://i1168.photobucket.com/albums/r482/jordanallen98/Screen%20Shot%202016-02-25%20at%202.58.54%20PM_zpsx1moz9vu.png");
+
   background-repeat: no-repeat;
   background-size: cover;
 
 }
+
 
 .signup_form {
   width: 50%;
@@ -55,6 +57,7 @@ body{
 .formcontainer {
 
 }
+
 
 .login-form {
   background-color: rgba(255,255,255,0.75);
@@ -109,6 +112,7 @@ body{
   position:absolute;
   opacity:20%;
   z-index: 1;
+  /*max-width: 500px;*/
 }
 
 /************************ CAFE LIST VIEW STYLES **************************************/
@@ -117,6 +121,8 @@ body{
   border-bottom: 1px solid lightgrey;
   margin: 10px 10%;
   background-color: rgba(255,255,255,.75);
+  max-width: 600px;
+  border-radius: 3px;
 }
 
 .cafe:hover {
@@ -131,9 +137,10 @@ body{
   height: 120px;
   width: 150px;
   margin-right: 10px;
-  padding: 10px 10px;;
+  /*padding: 10px 10px;;*/
   object-fit: cover;
   float: left;
+  border: none;
 }
 
 .coffeeShopInfo {
@@ -160,7 +167,7 @@ body{
 /***************** Appointments ********************/
 
 .appointmentsDashboard {
-  height: 400px;
+  height: 600px;
   width: 100%;
   /*margin-top: 1em;*/
   overflow: scroll;
@@ -179,7 +186,7 @@ body{
   border-bottom: 1px solid lightgrey;
   margin: 10px 10%;
   background-color: white;
-  box-shadow: 2px 2px 2px darkgrey;
+  box-shadow: 2px 2px 2px lightgrey;
 
   /*z-index: 1;*/
 }
@@ -193,8 +200,56 @@ body{
 .addNewAppointmentForm {
   margin: 10px 10%;
 }
-.timeInput {
-  width: 82%;
+
+
+.timeDayInput {
+  /*margin: auto;*/
+  display: inline-block;
+  /*width: 100%;*/
+  /*align-items: center;*/
+}
+.time {
+  background-color: white;
+  display: inline-block;
+  box-shadow: 2px 2px 2px lightgrey;
+  border: none;
+  border-right: 1px solid lightgrey;
+  height: 25px;
+  margin: 10px 10%;
+}
+
+.day {
+  margin: 10px 10%;
+
+}
+
+/*.day {
+  display: inline-block;
+  box-shadow: 2px 2px 2px lightgrey;
+  border: none;
+  height: 25px;
+}*/
+
+.createNew {
+  background-color: forestgreen;
+  color: white;
+  border: none;
+  padding: 10px;
+  /*position: relative;*/
+  margin: 0 auto;
+  align-items: center;
+  display: block;
+  border-radius: 0;
+  box-shadow: 2px 2px 2px lightgrey;
+}
+
+.submitButton {
+  background-color: #e74c3c;
+  border: none;
+  color: white;
+  box-shadow: 2px 2px 2px lightgrey;
+  height: 25px;
+  margin: 10px 10%;
 }
 
 /*.addAppointmentButton:hover {
