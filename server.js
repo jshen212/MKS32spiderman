@@ -66,7 +66,7 @@ app.post('/filterAppointments', function(req, res){
       }
 
       // case: user is the host
-      if(doc[i].email === email){
+      if(doc[i].email === email && doc[i].guests.length > 0){
         filteredAppointments.hosting.push(doc[i]);
       }
 
@@ -80,6 +80,7 @@ app.post('/filterAppointments', function(req, res){
     res.send(filteredAppointments);
   });
 });
+
 
 // creates a request to join an appointment (changes appointment status to "pending" and puts the current user in the appointment's "guest" array)
 app.post('/sendJoinRequest', function(req, res){
@@ -134,6 +135,20 @@ app.post('/signin', function(req, res){
 
       res.send(token);
     }
+  });
+});
+
+app.post('/acceptAppt', function(req, res){
+  console.log('++line142 server.js', req.body);
+  db.appointments.update({time: req.body.time}, { $set: { appointmentStatus: 'scheduled', guests: [], acceptedGuest: req.body.email }}, function(err, appt){
+    res.send(true);
+  });
+});
+
+app.post('/denyAppt', function(req, res){
+  console.log('++line142 server.js', req.body);
+  db.appointments.update({time: req.body.time}, { $pullAll: { guests: [req.body.email] } }, function(err, appt){
+    res.send(true);
   });
 });
 
