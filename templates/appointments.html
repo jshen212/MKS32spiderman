@@ -19,8 +19,7 @@
   <table class="table">
     <thead>
       <tr>
-        <th>First</th>
-        <th>Last</th>
+        <th>Guest Email</th>
         <th>Location</th>
         <th>Address</th>
         <th>Day</th>
@@ -51,28 +50,34 @@
         <th>Address</th>
         <th>Day</th>
         <th>Time</th>
-        <th>Action</th>
+        <th>Guest</th>
         <th>&nbsp</th>
       </tr>
     </thead>
 
     <tbody>
-      <tr ng-repeat="hostAppt in hosting"
+      <tr ng-repeat="hostAppt in hosting">
         <td>{{hostAppt.firstName}}</td>
         <td>{{hostAppt.lastName}}</td>
         <td>{{hostAppt.shop.name}}</td>
         <td>{{hostAppt.shop.formatted_address}}</td>
         <td>{{hostAppt.day.split('T')[0]}}</td>
         <td>{{hostAppt.time}}</td>
-        <td><button class="btn btn-primary" ng-click='accepted(hostAppt)'>Accept</button></td>
-        <td><button class="btn btn-danger" ng-click='denied(hostAppt)'>Deny</button></td>
-      </div>
-    </tr>
-  </tbody>
-</table>
+        <td>
+          <ul ng-repeat="guest in hostAppt.guests track by $index">
+            <span>{{ guest }}
+              <br>
+              <button class="btn btn-primary" ng-click="accepted(hostAppt, guest)">Accept</button>
+              <button class="btn btn-danger" ng-click="denied(hostAppt, guest)">Deny</button>
+            </span>
+          </ul>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 
-<!-- <div>
-<h3>{{hostAppt.day}}</h3>
+  <!-- <div>
+  <h3>{{hostAppt.day}}</h3>
 </div> -->
 
 <!-- // loop over requested appointments (appts that user has requested to join but is not hosting) -->
