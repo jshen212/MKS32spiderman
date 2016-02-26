@@ -151,7 +151,7 @@ body {
 /***************** Appointments ********************/
 
 .appointmentsDashboard {
-  height: 400px;
+  height: 600px;
   width: 100%;
   /*margin-top: 1em;*/
   overflow: scroll;
@@ -214,12 +214,26 @@ body {
   height: 25px;
 }*/
 
-.submitButton {
+.createNew {
   background-color: forestgreen;
+  color: white;
+  border: none;
+  padding: 10px;
+  /*position: relative;*/
+  margin: 0 auto;
+  align-items: center;
+  display: block;
+  border-radius: 0;
+  box-shadow: 2px 2px 2px lightgrey;
+}
+
+.submitButton {
+  background-color: #e74c3c;
   border: none;
   color: white;
   box-shadow: 2px 2px 2px lightgrey;
   height: 25px;
+  margin: 10px 10%;
 }
 
 /*.addAppointmentButton:hover {
