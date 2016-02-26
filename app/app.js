@@ -17,6 +17,12 @@ app.controller('cafeListCtrl', ['$scope', '$http', '$window', '$location', funct
     });
   };
 
+  $scope.statusFilter = function(apptStat){
+    if(apptStat !== 'scheduled'){
+      return apptStat;
+    }
+  };
+
   $scope.creatingAppointment = true;
   $scope.createNewAppointment = function(shopId){
     if($scope.selected === false){
@@ -64,11 +70,7 @@ app.controller('cafeListCtrl', ['$scope', '$http', '$window', '$location', funct
           console.log(res);
         });
       });
-
-
-
     }
-
   };
 
 // sweetalert pop-up box when joining appointments

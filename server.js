@@ -66,7 +66,7 @@ app.post('/filterAppointments', function(req, res){
       }
 
       // case: user is the host
-      if(doc[i].email === email && doc[i].guests.length > 0){
+      if(doc[i].email === email && doc[i].guests.length >= 0){
         filteredAppointments.hosting.push(doc[i]);
       }
 
@@ -151,6 +151,8 @@ app.post('/denyAppt', function(req, res){
     res.send(true);
   });
 });
+
+
 
 
 // sets up server on the process environment port or port 8000
