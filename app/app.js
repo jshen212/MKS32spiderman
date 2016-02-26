@@ -6,6 +6,7 @@ var app = angular.module('app', [
   'ui.bootstrap.datetimepicker'
 ]);
 
+
 app.controller('cafeListCtrl', ['$scope', '$http', '$window', '$location', function($scope, $http, $window, $location){
   $scope.newAppointment = {};
 
