@@ -14,7 +14,7 @@
         <div ng-controller="cafeListCtrl" ng-repeat="shop in coffeeShops" >
           <div class="cafe">
             <div ng-click='toggleCoffeeShopAppointments(shop.id)' class="cafePreviewClick">
-              <img class="coffeeShopImage img-thumbnail" src={{shop.shopImage}}>
+              <img class="coffeeShopImage" src={{shop.shopImage}}>
               <div class='coffeeShopInfo'>
                 <h1 class="coffeeShopName">{{shop.name}}</h1>
                 <p class='coffeeShopAddress'>{{shop.formatted_address}} </p>
@@ -90,9 +90,10 @@
                   <div class="appointment">
                     <button class='meetupButton' ng-click="requestToJoin($index)">join</button>
                     <div class="appointmentData">
-                      <p>{{appt.firstName}} {{appt.lastName}}</p>
-                      <p>{{appt.day}} at {{appt.time}}</p>
-                      <p></p>
+                      <p class="hostName">{{appt.firstName}} {{appt.lastName}}</p>
+                      <p class="hostDateTime">{{appt.day}}</p>
+                      <p class="hostDateTime">{{appt.time}}</p>
+
                     </div>
                   </div>
                 </div>
