@@ -85,7 +85,7 @@ app.controller('cafeListCtrl', ['$scope', '$http', '$window', '$location', funct
       closeOnConfirm: false
     }, function(){
       console.log('++line76 appointmentList for this cafe: ', $scope.appointmentList);
-      swal("Request sent!", "The host has recieved your request.", "success");
+      swal("Request sent!", "The host has recieved your request to join.", "success");
       $http.post('/sendJoinRequest', { token: hostId, appointment: $scope.appointmentList[thisAppointment] }).success(function(req, res){
         console.log('++line 76 app.js: a request should be sent to the server now');
       });

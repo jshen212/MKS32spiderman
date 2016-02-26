@@ -5,6 +5,7 @@
   position: fixed;
   top: 0;
   z-index: 2;
+  /*box-shadow: 2px 2px 0 #5E5E5E;*/
 }
 
 .header a {
@@ -115,6 +116,8 @@ body{
   opacity:20%;
   z-index: 1;
   /*max-width: 500px;*/
+  box-shadow: 2px 2px 2px lightgrey;
+
 }
 
 /************************ CAFE LIST VIEW STYLES **************************************/
@@ -123,6 +126,7 @@ body{
   border-bottom: 1px solid lightgrey;
   margin: 10px 10%;
   background-color: rgba(255,255,255,.75);
+  box-shadow: 2px 2px 2px lightgrey;
   max-width: 600px;
   border-radius: 3px;
 }
@@ -143,6 +147,8 @@ body{
   object-fit: cover;
   float: left;
   border: none;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
 }
 
 .coffeeShopInfo {
@@ -157,6 +163,7 @@ body{
   margin-top: 2px;
   font-weight: 200;
   font-size: 1.5em;
+  letter-spacing: 1.5px;
 }
 
 .coffeeShopAddress {
@@ -204,6 +211,7 @@ body{
   margin-top: 10px;
   text-align: center;
   font-weight: 200;
+  letter-spacing: 2px;
 }
 
 .appointment {
@@ -255,6 +263,9 @@ body{
 
 .createNew {
   background-color: #70C1B3;
+  /*letter-spacing: 1.2px;*/
+  width: 40px;
+  height: 40px;
   color: white;
   border: none;
   padding: 10px;
@@ -333,6 +344,7 @@ body{
 .joinButton {
   /*float: right;*/
   /*margin:0;*/
+  letter-spacing: 2px;
   display: inline-block;
   float: right;
   margin-right: 0;
@@ -350,33 +362,38 @@ body{
 
 /***************** MAP INFO WINDOW STYLES**********************/
 .gm-style-iw {
-  overflow: scroll:
-  padding: 0;
-  margin: 0;
+  min-height: 120px;
+  /*border-bottom: 1px solid lightgrey;*/
+  /*margin: 10px 10%;*/
+  /*background-color: rgba(255,255,255,.75);*/
+  /*box-shadow: 2px 2px 2px lightgrey;*/
+  max-width: 300px;
+  border-radius: 3px;
 }
 
 .gm-style-iw img {
+  height: 140px;
+  width: 150px;
+  margin-right: 10px;
+
   object-fit: cover;
-  margin: auto;
-  align: center;
-  height: 125px;
-  width: 100%;
+  float: left;
+  border: none;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
 }
 
 .gm-style-iw h2 {
-  font-size: 1.5em;
-  margin-bottom: 0;
-  margin-top: 0;
-  padding: 5px;
-  font-weight: normal;
-  background-color: rgba(46, 204, 113,1);
-  color: white;
+  margin-top: 2px;
+  font-weight: 400;
+  font-size: 1.3em;
+  /*letter-spacing: 1.5px;*/
 }
 
 .gm-style-iw p {
-  margin-bottom: 0;
-  margin-top: 0;
-  line-height: 1.5em;
+  margin-top: -8px;
+  line-height: normal;
+  font-size: .8em;
 }
 
 .opening-hours {
