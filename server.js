@@ -139,11 +139,19 @@ app.post('/signin', function(req, res){
 });
 
 app.post('/acceptAppt', function(req, res){
-    console.log('++line142 server.js', req.body);
-    db.appointments.update({time: req.body.time}, { $set: { appointmentStatus: 'scheduled', guests: [] }}, function(err, appt){
-      res.send(true);
-    });
+  console.log('++line142 server.js', req.body);
+  db.appointments.update({time: req.body.time}, { $set: { appointmentStatus: 'scheduled', guests: [], acceptedGuest: req.body.email }}, function(err, appt){
+    res.send(true);
   });
+});
+
+app.post('/denyAppt', function(req, res){
+  console.log('++line142 server.js', req.body);
+  db.appointments.update({time: req.body.time}, { $pullAll: { guests: [req.body.email] } }, function(err, appt){
+    res.send(true);
+  });
+});
+
 
 // sets up server on the process environment port or port 8000
 app.listen(process.env.PORT || 8000);

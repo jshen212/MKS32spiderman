@@ -1,18 +1,22 @@
 angular.module('signup', [])
 .controller('submitCtrl', ['$scope', '$http', '$location', '$window', function ($scope, $http, $location, $window) {
 
-  $scope.accepted = function(appt){
-    $http.post('/acceptAppt', {time: appt.time, email: appt.guests[0]}).success(function(res){
+  $scope.accepted = function(appt, guestEmail){
+    $http.post('/acceptAppt', {time: appt.time, email: guestEmail }).success(function(res){
       if(res){
-        $scope.requested = [];
         $scope.hosting = [];
         $scope.filterAppointments();
       }
     });
   };
-
-  $scope.denied = function(){
-
+  
+  $scope.denied = function(appt, guestEmail){
+    $http.post('/denyAppt', {time: appt.time, email: guestEmail }).success(function(res){
+      if(res){
+        $scope.hosting = [];
+        $scope.filterAppointments();
+      }
+    });
   };
 
 // authenticates by checking if there is a token

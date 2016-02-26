@@ -10,8 +10,6 @@
 <!-- page load fetches ALL appointments and filters out appts specific to user in the controller -->
 <h1 ng-init="filterAppointments()">Appointments</h1>
 
-
-
 <div  ng-app="signup" ng-contoller="submitCtrl">
 
   <!-- loop over confirmed appointments (appts that user is either the host or guest and both parties have confirmed) -->
@@ -29,8 +27,7 @@
 
     <tbody>
       <tr ng-repeat="confirmAppt in confirmed">
-        <td>{{confirmAppt.firstName}}</td>
-        <td>{{confirmAppt.lastName}}</td>
+        <td>{{confirmAppt.acceptedGuest}}</td>
         <td>{{confirmAppt.shop.name}}</td>
         <td>{{confirmAppt.shop.formatted_address}}</td>
         <td>{{moment().format(confirmAppt.day)}}</td>
