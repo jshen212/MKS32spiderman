@@ -61,12 +61,12 @@ app.post('/filterAppointments', function(req, res){
     for( var i = 0; i < doc.length; i++ ){
       // if user's email is in the appointments' "email" property, user is the host
       // case: user is a host or a guest and appointment status is scheduled = confirmed appointment
-      if ( (doc[i].email === email || _.contains(doc[i].guests, email) === true ) && doc[i].appointmentStatus === 'scheduled'){
+      if ( (doc[i].email === email || _.contains(doc[i].guests, email) === true ) && doc[i].appointmentStatus === 'scheduled' || doc[i].acceptedGuest === email){
         filteredAppointments.confirmed.push(doc[i]);
       }
 
       // case: user is the host
-      if(doc[i].email === email && doc[i].guests.length >= 0){
+      if(doc[i].email === email && doc[i].guests.length >= 0 && doc[i].appointmentStatus !== 'scheduled'){
         filteredAppointments.hosting.push(doc[i]);
       }
 
