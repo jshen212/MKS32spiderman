@@ -38,7 +38,7 @@ angular.module('mapsApp', ['ui.bootstrap.datetimepicker'])
 
     google.maps.event.addListener(marker, 'click', function() {
       infowindow.setContent(content);
-      infowindow.open(map, this);
+      infowindow.open(map, marker);
     });
 
     if(place.photos !== undefined){

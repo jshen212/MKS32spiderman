@@ -2,6 +2,7 @@ var app = angular.module('app', [
   'mapsApp',
   'signup',
   'ngRoute',
+  'ngAnimate',
   'ui.bootstrap.datetimepicker'
 ]);
 
@@ -40,7 +41,20 @@ app.controller('cafeListCtrl', ['$scope', '$http', '$window', '$location', funct
       $scope.newAppointment.guest_id = null;
       $scope.newAppointment.guests = [];
       $scope.newAppointment.appointmentStatus = null;
+      console.log('+line45', $scope.newAppointment.day);
 
+      function formatDateProperly (date) {
+        var date = $scope.newAppointment.day.split('-');
+        var months = { "01": "Jan", "02": "Feb", "03": "Mar", "04": "Apr", "05": "May", "06": "Jun", "07": "Jul", "08": "Aug", "09": "Sept", "10": "Oct", "11": "Nov", "12": "Dec" };
+        console.log(date);
+        var year = date[0];
+        var month = months[date[1]];
+        var day = date[2];
+
+        $scope.newAppointment.day = month + ' ' + day + ', ' + year + ' ';
+        console.log('++line56', $scope.newAppointment.day);
+      }
+      formatDateProperly();
 
       $http.post('/createAppointment', $scope.newAppointment).success(function(req, res){
         $scope.newAppointment.firstName = res.firstName;
@@ -63,7 +77,7 @@ app.controller('cafeListCtrl', ['$scope', '$http', '$window', '$location', funct
     var hostId = $window.localStorage.getItem('com.brewed');
 
     swal({
-      title: "Are you sure you want to join this appointment?",
+      title: "Are you sure you want to join?",
       type: "",
       showCancelButton: true,
       confirmButtonColor: "forestgreen",
@@ -71,7 +85,7 @@ app.controller('cafeListCtrl', ['$scope', '$http', '$window', '$location', funct
       closeOnConfirm: false
     }, function(){
       console.log('++line76 appointmentList for this cafe: ', $scope.appointmentList);
-      swal("Request sent!", "The host of this appointment has recieved your request to join. Check your appointments page to see if they accepted!", "success");
+      swal("Request sent!", "The host has recieved your request to join.", "success");
       $http.post('/sendJoinRequest', { token: hostId, appointment: $scope.appointmentList[thisAppointment] }).success(function(req, res){
         console.log('++line 76 app.js: a request should be sent to the server now');
       });
