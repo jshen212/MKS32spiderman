@@ -12,7 +12,6 @@ app.controller('cafeListCtrl', ['$scope', '$http', '$window', '$location', funct
   $scope.selected = false;
   $scope.toggleCoffeeShopAppointments = function(shopId){
     $scope.selected = !$scope.selected;
-    $scope.appointmentList = [];
     $http.post('/getAppointments', { id: shopId }).success(function(res){
       $scope.appointmentList = res;
     });

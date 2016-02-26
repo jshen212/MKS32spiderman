@@ -9,7 +9,7 @@ angular.module('signup', [])
       }
     });
   };
-  
+
   $scope.denied = function(appt, guestEmail){
     $http.post('/denyAppt', {time: appt.time, email: guestEmail }).success(function(res){
       if(res){

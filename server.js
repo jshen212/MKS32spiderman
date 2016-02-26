@@ -147,7 +147,7 @@ app.post('/acceptAppt', function(req, res){
 
 app.post('/denyAppt', function(req, res){
   console.log('++line142 server.js', req.body);
-  db.appointments.update({time: req.body.time}, { $pullAll: { guests: [req.body.email] } }, function(err, appt){
+  db.appointments.update({time: req.body.time}, {appointmentStatus: 'pending'}, { $pullAll: { guests: [req.body.email] } }, function(err, appt){
     res.send(true);
   });
 });
