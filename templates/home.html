@@ -13,7 +13,7 @@
     <div ng-controller="cafeListCtrl" ng-repeat="shop in coffeeShops" >
       <div class="cafe">
         <div ng-click='toggleCoffeeShopAppointments(shop.id)' class="cafePreviewClick">
-          <img class="coffeeShopImage" src={{shop.shopImage}}>
+          <img class="coffeeShopImage img-thumbnail" src={{shop.shopImage}}>
           <div class='coffeeShopInfo'>
             <h1 class="coffeeShopName">{{shop.name}}</h1>
             <p class='coffeeShopAddress'>{{shop.formatted_address}} </p>
@@ -23,11 +23,64 @@
           <div class="appointmentsDashboard" ng-if='selected'>
             <h3 class='appointmentsTitle'>Appointments</h3>
             <div ng-if="creatingAppointment" class="addNewAppointmentForm">
-              <form>
-                Time: <input ng-model="newAppointment.time" class='timeInput' type="time" name="time">
-                Day:   <input ng-model="newAppointment.day" class='timeInput' type="date" name="date">
+              <form class="timeDayInput center">
+
+                <!-- <input ng-model="newAppointment.day" class='day col-md-4' type="date" name="date"> -->
+
+                <select ng-model="newAppointment.time" class='time form-control-md col-md-10 ' type="time" name="time">
+                  <option value="" disabled selected>Time</option>
+                  <option>12:00AM</option>
+                  <option>12:30AM</option>
+                  <option>1:00AM</option>
+                  <option>1:30AM</option>
+                  <option>2:00AM</option>
+                  <option>3:30AM</option>
+                  <option>4:00AM</option>
+                  <option>4:30AM</option>
+                  <option>5:00AM</option>
+                  <option>5:30AM</option>
+                  <option>6:00AM</option>
+                  <option>6:30AM</option>
+                  <option>7:00AM</option>
+                  <option>7:30AM</option>
+                  <option>8:00AM</option>
+                  <option>8:30AM</option>
+                  <option>9:00AM</option>
+                  <option>9:30AM</option>
+                  <option>10:00AM</option>
+                  <option>10:30AM</option>
+                  <option>11:00AM</option>
+                  <option>11:30AM</option>
+                  <option>12:00PM</option>
+                  <option>12:30PM</option>
+                  <option>1:00PM</option>
+                  <option>1:30PM</option>
+                  <option>2:00PM</option>
+                  <option>3:30PM</option>
+                  <option>4:00PM</option>
+                  <option>4:30PM</option>
+                  <option>5:00PM</option>
+                  <option>5:30PM</option>
+                  <option>6:00PM</option>
+                  <option>6:30PM</option>
+                  <option>7:00PM</option>
+                  <option>7:30PM</option>
+                  <option>8:00PM</option>
+                  <option>8:30PM</option>
+                  <option>9:00PM</option>
+                  <option>9:30PM</option>
+                  <option>10:00PM</option>
+                  <option>10:30PM</option>
+                  <option>11:00PM</option>
+                  <option>11:30PM</option>
+                </select>
+                <!-- <datetimepicker class="hour" data-ng-model="newAppointment.time"  data-datetimepicker-config="{ startView:'hour', minView:'hour' }"></datetimepicker> -->
+
+                  <datetimepicker class="day" data-ng-model="newAppointment.day"
+                   data-datetimepicker-config="{ startView:'day', minView:'day', modelType: 'YYYY-MM-DD' }"></datetimepicker>
+
                 <input name="coffeShopObject" value={{shop}} ng-show="false">
-                <input ng-click='addNewAppointment(shop.id, shop)' type="submit" value="Submit">
+                <input ng-click='addNewAppointment(shop.id, shop)' type="submit" value="Submit" class="submitButton col-md-4">
               </form>
             </div>
 
@@ -35,7 +88,8 @@
               <div class="appointment">
                 <button class='meetupButton' ng-click="requestToJoin($index)">join</button>
                 <div class="appointmentData">
-                  <p>{{appt.day}} {{appt.time}}</p>
+                  <p>{{appt.day}}</p>
+                  <p>{{appt.time}}</p>
                   <p>{{appt.firstName}} {{appt.lastName}}</p>
                 </div>
               </div>

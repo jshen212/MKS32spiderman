@@ -37,12 +37,13 @@
   background-color: #e74c3c;
 }*/
 
-body{
+body {
   background-color: lightgrey;
   background-size: stretch;
   height: auto;
   background-repeat: no-repeat;
 }
+
 .login-form {
   background-color: rgba(255,255,255,0.75);
 }
@@ -95,6 +96,7 @@ body{
   position:absolute;
   opacity:20%;
   z-index: 1;
+  /*max-width: 500px;*/
 }
 
 /************************ CAFE LIST VIEW STYLES **************************************/
@@ -103,6 +105,8 @@ body{
   border-bottom: 1px solid lightgrey;
   margin: 10px 10%;
   background-color: rgba(255,255,255,.75);
+  max-width: 600px;
+  border-radius: 3px;
 }
 
 .cafe:hover {
@@ -117,9 +121,10 @@ body{
   height: 120px;
   width: 150px;
   margin-right: 10px;
-  padding: 10px 10px;;
+  /*padding: 10px 10px;;*/
   object-fit: cover;
   float: left;
+  border: none;
 }
 
 .coffeeShopInfo {
@@ -165,7 +170,7 @@ body{
   border-bottom: 1px solid lightgrey;
   margin: 10px 10%;
   background-color: white;
-  box-shadow: 2px 2px 2px darkgrey;
+  box-shadow: 2px 2px 2px lightgrey;
 
   /*z-index: 1;*/
 }
@@ -179,8 +184,42 @@ body{
 .addNewAppointmentForm {
   margin: 10px 10%;
 }
-.timeInput {
-  width: 82%;
+
+
+.timeDayInput {
+  /*margin: auto;*/
+  display: inline-block;
+  /*width: 100%;*/
+  /*align-items: center;*/
+}
+.time {
+  background-color: white;
+  display: inline-block;
+  box-shadow: 2px 2px 2px lightgrey;
+  border: none;
+  border-right: 1px solid lightgrey;
+  height: 25px;
+  margin: 10px 10%;
+}
+
+.day {
+  margin: 10px 10%;
+
+}
+
+/*.day {
+  display: inline-block;
+  box-shadow: 2px 2px 2px lightgrey;
+  border: none;
+  height: 25px;
+}*/
+
+.submitButton {
+  background-color: forestgreen;
+  border: none;
+  color: white;
+  box-shadow: 2px 2px 2px lightgrey;
+  height: 25px;
 }
 
 /*.addAppointmentButton:hover {

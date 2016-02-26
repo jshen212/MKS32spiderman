@@ -1,4 +1,4 @@
-angular.module('mapsApp', [])
+angular.module('mapsApp', ['ui.bootstrap.datetimepicker'])
 .controller('MapCtrl', function ($scope) {
   //VARIABLES USED IN FUNCTIONS
   var map;
