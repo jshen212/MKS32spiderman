@@ -8,18 +8,6 @@ angular.module('mapsApp', ['ui.bootstrap.datetimepicker'])
   $scope.hasLocation = false;
 
 
-  // if(!$scope.hasLocation){
-  //   swal({
-  //     title: "You must allow sharing your location for our maps to work",
-  //     type: "",
-  //     showCancelButton: true,
-  //     confirmButtonColor: "forestgreen",
-  //     confirmButtonText: "OK!",
-  //     closeOnConfirm: false
-  //   });
-  //   hasWarnedAboutLocation = true;
-  // }
-
   function createMarker(place) {
 
     var placeLoc = place.geometry.location;
