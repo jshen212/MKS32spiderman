@@ -109,12 +109,12 @@ app.post('/sendJoinRequest', function(req, res){
       }
     }
 
-        console.log('no users email, so adding to database');
-        db.appointments.update({time: appointment.time}, { $set: { appointmentStatus: 'pending' }, $push: { guests: email } });
-        res.send(false);
-        return;
-    }
-  });
+    console.log('no users email, so adding to database');
+    db.appointments.update({time: appointment.time}, { $set: { appointmentStatus: 'pending' }, $push: { guests: email } });
+    res.send(false);
+    return;
+  }
+});
 
 // fetches all appointments and sends back to the controller
 app.get('/fetchAppointmentsDashboardData', function(req, res){

@@ -41,7 +41,8 @@
 }*/
 
 body{
-  background-color: lightgrey;
+  background-color: #B3D1FF;
+  background-color: #F5F5F5;
   background-repeat: no-repeat;
   background-size: cover;
 
@@ -88,12 +89,6 @@ body{
   color: white;
   text-decoration: none;
 }
-
-
-/*.login {
-  background-image: url("http://cdn1.tnwcdn.com/wp-content/blogs.dir/1/files/2015/09/Screen-Shot-2015-09-11-at-3.43.50-PM.png");
-  background-size: cover;
-}*/
 
 #map {
   display: block;
@@ -418,4 +413,86 @@ body{
   max-width: 100%;
   max-height: 700px;
   overflow: hidden;
+}
+
+
+
+
+
+
+/****** Appointments.html view ******/
+
+.appointmentsTable {
+  margin-top: 70px;
+  background-color: white;
+  border-radius: 3px;
+  width: 900px;
+  padding-bottom: 100px;
+  border: 1px solid lightgrey;
+}
+.appointmentsTableHeader {
+  background-color: #EDEFED;
+  width: inherit;
+  height: 60px;
+  padding: 10px 0px;
+  margin-left: -16px;
+  margin-top: -1px;
+  border-top-right-radius: 3px;
+  border-top-left-radius: 3px;
+  border: 1px solid lightgrey;
+
+}
+.appointmentsTableTitle {
+  text-align: left;
+  font-weight: 400;
+  font-size: 16px;
+  color: #565a5c;
+  letter-spacing: 2px;
+  margin-top: 12px;
+  margin-left: 14px;
+}
+.appointmentsTableSubTitle {
+  text-align: left;
+  font-weight: 400;
+  font-size: 16px;
+  color: #565a5c;
+  letter-spacing: 2px;
+  margin-top: 12px;
+  margin-left: 0px;
+}
+
+.accept {
+  width: 42px;
+  height: 25px;
+  display: inline-block;
+  font-size: 12px;
+  float: left;
+  border: none;
+  border-radius: none;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+  background-color: #70C1B3;
+  color: white;
+}
+.deny {
+  width: 42px;
+  height: 25px;
+  display: inline-block;
+  font-size: 12px;
+  float:right;
+  border: none;
+  /*margin: 1px;*/
+  border-radius: none;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+  background-color: #F25F5C;
+  color: white;
+}
+thead {
+  width: 100%;
+  padding-left: 0px;
+}
+th {
+  font-weight: 400;
+  background-color: #EDEFED;
 }
