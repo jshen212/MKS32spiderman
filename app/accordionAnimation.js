@@ -7,7 +7,6 @@ angular.module('accordion', ['ngAnimate'])
       content: "Dynamic Group Body - 1",
       open: false,
       checked:true
-
     },
     {
       title: "Dynamic Group Header - 2",
@@ -16,8 +15,7 @@ angular.module('accordion', ['ngAnimate'])
       checked:false
     }
   ];
-
-    $scope.onClick = function(item){
-      item.open = !item.open;
-    };
+  $scope.onClick = function(item){
+    item.open = !item.open;
+  };
 });
