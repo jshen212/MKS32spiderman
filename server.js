@@ -25,6 +25,8 @@ app.post('/createAppointment', function(req, res){
     req.body.firstName = appt[0].first;
     req.body.lastName = appt[0].last;
     req.body.email = decoded.email;
+    req.body.profilePicture = appt[0].profilePicture;
+    req.body.bio = appt[0].bio;
     db.appointments.insert(req.body, function(err, doc){
       res.send(true);
     });

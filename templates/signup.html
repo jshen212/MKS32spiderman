@@ -1,3 +1,4 @@
+<div class="bgimg">
 <div class='signup_form'>
   <div class='formcontainer'>
 
@@ -148,9 +149,33 @@
         <label>Tell us about yourself...</label>
         <textarea class="form-control" rows="3" ng-model="newUser.bio"></textarea>
       </div>
+      <div class="form-group col-md-12">
+        <label>paste in a photo url of yourself</label>
+        <input type="text" class="form-control" placeholder="photo url" ng-model="newUser.profilePicture">
+      </div>
 
         <button type="submit" ng-click="addUser()" class="btn btn-md btn-block login-buttons">Submit</button>
 
     </form>
   </div>
 </div>
+</div>
+
+<style>
+.bgimg{
+  background-image: url('http://media4.popsugar-assets.com/files/2013/12/19/815/n/1922283/6a73ebd3380b3639_AWOD_0-2/i/quaintest-coffee-date-weve-ever-seen.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: block;
+  position: absolute;
+  height:auto;
+  bottom:0;
+  top:0;
+  left:0;
+  right:0;
+}
+
+.signin-box {
+  margin-top: 15%;
+}
+</style>

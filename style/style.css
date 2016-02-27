@@ -1,3 +1,13 @@
+/** {
+  font-family: 'Roboto', sans-serif;
+}*/
+/*.container {
+  background-image: url('http://www.themodernman.com/wp-content/uploads/the-right-attitude-for-approaching-women-in-coffee-shops.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+}*/
 .header {
   background-color: #F25F5C;
   width: 100%;
@@ -40,7 +50,7 @@
   background-color: #e74c3c;
 }*/
 
-body{
+body {
   /*background-image: url("http://i1168.photobucket.com/albums/r482/jordanallen98/Screen%20Shot%202016-02-25%20at%202.58.54%20PM_zpsx1moz9vu.png");*/
   background-color: #B3D1FF;
   background-color: #F5F5F5;
@@ -162,14 +172,14 @@ body{
 
 .coffeeShopName {
   margin-top: 2px;
-  font-weight: 200;
-  font-size: 1.5em;
-  letter-spacing: 1.5px;
+  font-weight: 300;
+  font-size: 1.65em;
+  /*letter-spacing: 1.5px;*/
 }
 
 .coffeeShopAddress {
   /*float: left;*/
-  margin-top: -8px;
+  margin-top: -5px;
   line-height: normal;
   font-size: .8em;
 }
@@ -211,8 +221,8 @@ body{
   margin: 0 auto;
   margin-top: 10px;
   text-align: center;
-  font-weight: 200;
-  letter-spacing: 2px;
+  font-weight: 300;
+  /*letter-spacing: 2px;*/
 }
 
 .appointment {
@@ -222,24 +232,86 @@ body{
   background-color: white;
   box-shadow: 2px 2px 2px lightgrey;
   border-radius: 3px;
+  /*border-bottom: 1px solid lightgrey;*/
   /*z-index: 1;*/
 }
 
 .appointmentData {
   padding: 10px;
+  float: left;
 }
 
 .appointmentData, p {
   line-height: .5em;
 }
 
+.hostProfilePicture {
+  height: 75px;
+  width: 75px;
+  float: left;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+
 .hostName {
   padding-bottom: 5px;
+  font-size: 1.7em;
+  font-weight: 300;
+  /*padding-top: 5px;
+  margin-left: 5px;
+  float: left;*/
 }
 
 .hostDateTime {
   font-size: .8em;
+  /*margin-left: 5px;
+  float: left;*/
 }
+
+.hostBio {
+  /*border-top: 1px solid lightgrey;*/
+  clear: both;
+  height: 100%;
+  /*width: 100%;*/
+  background-color: rgba(255,255,255,0.5);
+  /*line-height: 5pc;*/
+}
+.aboutHostHeader{
+  /*background-color: #EDEFED;*/
+  width: 100%;
+  border-top: 1px solid lightgrey;
+}
+.aboutHostTitle {
+  margin-top: 5px;
+  font-size: 1.3em;
+  font-weight: 300;
+  text-align: center;
+  /*margin-left: 85px;*/
+}
+.hostBioText {
+  margin-left: 55px;
+  margin-right: 55px;
+  line-height: 17px;
+}
+
+/*.hostBio.ng-hide-add,
+.hostBio.ng-hide-remove {
+  display: block !important;
+  height: 0px;
+}
+.hostBio.ng-hide-remove.ng-hide-remove-active {
+  height: 100px;
+}
+.hostBio.ng-hide-add {
+  height: 200px;
+}
+.hostBio.ng-hide-add.ng-hide-add-active {
+  height: 0;
+}*/
+
+
+
+
 
 
 .addAppointmentButton {
@@ -480,13 +552,14 @@ body{
   border-bottom-left-radius: 3px;
   background-color: #70C1B3;
   color: white;
+  margin-left: 10px;
 }
 .deny {
   width: 42px;
   height: 25px;
   display: inline-block;
   font-size: 12px;
-  float:right;
+  float:left;
   border: none;
   /*margin: 1px;*/
   border-radius: none;
@@ -494,6 +567,7 @@ body{
   border-bottom-right-radius: 3px;
   background-color: #F25F5C;
   color: white;
+  /*margin-left: -10px;*/
 }
 thead {
   width: 100%;
