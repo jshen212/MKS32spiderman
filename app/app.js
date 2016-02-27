@@ -73,23 +73,30 @@ app.controller('cafeListCtrl', ['$scope', '$http', '$window', '$location', funct
     }
   };
 
-// sweetalert pop-up box when joining appointments
+  // sweetalert pop-up box when joining appointments
   $scope.requestToJoin = function(thisAppointment) {
     var hostId = $window.localStorage.getItem('com.brewed');
+    console.log('requested to join');
+    $http.post('/sendJoinRequest', { token: hostId, appointment: $scope.appointmentList[thisAppointment] }).success(function(joined){
 
-    swal({
-      title: "Are you sure you want to join?",
-      type: "",
-      showCancelButton: true,
-      confirmButtonColor: "forestgreen",
-      confirmButtonText: "Yes!",
-      closeOnConfirm: false
-    }, function(){
-      console.log('++line76 appointmentList for this cafe: ', $scope.appointmentList);
-      swal("Request sent!", "The host has recieved your request to join.", "success");
-      $http.post('/sendJoinRequest', { token: hostId, appointment: $scope.appointmentList[thisAppointment] }).success(function(req, res){
-        console.log('++line 76 app.js: a request should be sent to the server now');
-      });
+      console.log('LINE82 SUCCESSFUL JOIN', joined);
+
+      if(!joined){
+        swal({
+          title: "Are you sure you want to join?",
+          type: "",
+          showCancelButton: true,
+          confirmButtonColor: "forestgreen",
+          confirmButtonText: "Yes!",
+          closeOnConfirm: false
+        }, function(){
+          swal("Request sent!", "The host has recieved your request to join.", "success");
+        });
+      }
+
+      else {
+        sweetAlert("Oops...", "You have already joined this appointment", "error");
+      }
     });
   };
 }]);

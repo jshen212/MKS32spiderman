@@ -33,7 +33,7 @@ app.post('/createAppointment', function(req, res){
 
 // finds appointments for a specific store by shopId
 app.post('/getAppointments', function(req, res){
-// shopId is in the request
+  // shopId is in the request
   var shopId = {
     id: req.body.id
   };
@@ -88,9 +88,33 @@ app.post('/sendJoinRequest', function(req, res){
   var secret = "brewed";
   var email = jwt.decode(currentUserId, secret).email;
   var appointment = req.body.appointment;
-  db.appointments.update({time: appointment.time}, { $set: { appointmentStatus: 'pending' }, $push: { guests: email } }, function(err, appt){
+  var guestsArr = appointment.guests;
+
+  console.log('LINE 93', guestsArr);
+
+  if(!guestsArr.length){
+    console.log('++line96 guestarr has no length');
+    db.appointments.update({time: appointment.time}, { $set: { appointmentStatus: 'pending' }, $push: { guests: email } }, function(){
+      res.send(false);
+    });
+  }
+
+  else {
+    console.log('line103 looping through guest arr');
+    for(var i = 0; i < guestsArr.length; i++){
+      if(guestsArr[i] === email){
+        console.log('found the users email');
+        res.send(true);
+        return;
+      }
+    }
+
+        console.log('no users email, so adding to database');
+        db.appointments.update({time: appointment.time}, { $set: { appointmentStatus: 'pending' }, $push: { guests: email } });
+        res.send(false);
+        return;
+    }
   });
-});
 
 // fetches all appointments and sends back to the controller
 app.get('/fetchAppointmentsDashboardData', function(req, res){
