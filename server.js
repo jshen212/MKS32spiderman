@@ -78,7 +78,6 @@ app.post('/filterAppointments', function(req, res){
       }
     }
 
-    console.log(filteredAppointments);
     res.send(filteredAppointments);
   });
 });
@@ -92,29 +91,25 @@ app.post('/sendJoinRequest', function(req, res){
   var appointment = req.body.appointment;
   var guestsArr = appointment.guests;
 
-  console.log('LINE 93', guestsArr);
-
+// if no guests in the guests array, add current user's email into the guest array
   if(!guestsArr.length){
-    console.log('++line96 guestarr has no length');
     db.appointments.update({time: appointment.time}, { $set: { appointmentStatus: 'pending' }, $push: { guests: email } }, function(){
       res.send(false);
     });
   }
 
+// if guests array has items, loop throug hand check if user's email is in there
   else {
-    console.log('line103 looping through guest arr');
     for(var i = 0; i < guestsArr.length; i++){
+      // if user's email is in the guest array, respond with true
       if(guestsArr[i] === email){
-        console.log('found the users email');
         res.send(true);
-        return;
       }
     }
 
-    console.log('no users email, so adding to database');
+    // if user's email is not in the guest array, respond with false
     db.appointments.update({time: appointment.time}, { $set: { appointmentStatus: 'pending' }, $push: { guests: email } });
     res.send(false);
-    return;
   }
 });
 
@@ -164,21 +159,19 @@ app.post('/signin', function(req, res){
   });
 });
 
+// accepts a guest and adds the guest's email onto the appointment
 app.post('/acceptAppt', function(req, res){
-  console.log('++line142 server.js', req.body);
   db.appointments.update({time: req.body.time}, { $set: { appointmentStatus: 'scheduled', guests: [], acceptedGuest: req.body.email }}, function(err, appt){
     res.send(true);
   });
 });
 
+// denies a guest's request, and removes guest's email from the guests array
 app.post('/denyAppt', function(req, res){
-  console.log('++line142 server.js', req.body);
   db.appointments.update({time: req.body.time}, {appointmentStatus: 'pending'}, { $pullAll: { guests: [req.body.email] } }, function(err, appt){
     res.send(true);
   });
 });
-
-
 
 
 // sets up server on the process environment port or port 8000
