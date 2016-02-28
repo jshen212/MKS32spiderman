@@ -1,7 +1,7 @@
 var app = angular.module('app', [
   'brew.auth',
-  'mapsApp',
-  'signup',
+  'brew.appts',
+  'brew.map',
   'ngRoute',
   'ngAnimate',
   'ui.bootstrap.datetimepicker'
@@ -114,7 +114,7 @@ app.config(['$routeProvider', '$httpProvider', function($routeProvider){
 
   .when('/appointments', {
     templateUrl: 'templates/appointments.html',
-    controller: 'submitCtrl',
+    controller: 'ApptCtrl',
     authenticate: true
   })
 

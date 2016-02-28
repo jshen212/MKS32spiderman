@@ -1,4 +1,4 @@
-angular.module('mapsApp', ['ui.bootstrap.datetimepicker'])
+angular.module('brew.map', ['ui.bootstrap.datetimepicker'])
 .controller('MapCtrl', function ($scope) {
   var map;
   var infowindow;

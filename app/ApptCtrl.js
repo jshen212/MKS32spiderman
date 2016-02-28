@@ -1,5 +1,5 @@
-angular.module('signup', [])
-.controller('submitCtrl', ['$scope', '$http', '$location', '$window', function ($scope, $http, $location, $window) {
+angular.module('brew.appts', [])
+.controller('ApptCtrl', ['$scope', '$http', '$location', '$window', function ($scope, $http, $location, $window) {
 
 // clears the hosting appointments and re-invokes appointment filter when host accepts a guest
   $scope.accepted = function(appt, guestEmail){
