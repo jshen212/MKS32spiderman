@@ -6,7 +6,7 @@ var jwt = require('jwt-simple');
 var _ = require('underscore');
 
 // mongo database (database name = brewfortwo, tables = users, appointments)
-var db = mongojs('brewfortwo', ['users', 'appointments']);
+var db = mongojs('mongodb://heroku_q4kfsjs3:i346vhev6p9eoge8tenbq1fiu0@ds011278.mongolab.com:11278/heroku_q4kfsjs3', ['users', 'appointments']);
 var app = express();
 
 app.use(express.static(__dirname+'/'));
