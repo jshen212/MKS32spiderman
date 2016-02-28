@@ -1,4 +1,5 @@
 var app = angular.module('app', [
+  'brew.auth',
   'mapsApp',
   'signup',
   'ngRoute',
@@ -108,7 +109,7 @@ app.config(['$routeProvider', '$httpProvider', function($routeProvider){
 
   .when('/home', {
     templateUrl: 'templates/home.html',
-    controller: 'submitCtrl'
+    controller: 'AuthCtrl'
   })
 
   .when('/appointments', {
@@ -119,12 +120,12 @@ app.config(['$routeProvider', '$httpProvider', function($routeProvider){
 
   .when('/signin', {
     templateUrl: 'templates/signin.html',
-    controller: 'submitCtrl'
+    controller: 'AuthCtrl'
   })
 
   .when('/signup', {
     templateUrl: 'templates/signup.html',
-    controller: 'submitCtrl'
+    controller: 'AuthCtrl'
   })
 
   .otherwise({
