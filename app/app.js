@@ -12,23 +12,23 @@ angular.module('brew', [
   $routeProvider
 
   .when('/home', {
-    templateUrl: 'templates/home.html',
+    templateUrl: 'app/mapCafe/home.html',
     controller: 'AuthCtrl'
   })
 
   .when('/appointments', {
-    templateUrl: 'templates/appointments.html',
+    templateUrl: 'app/appointments/appointments.html',
     controller: 'ApptCtrl',
     authenticate: true
   })
 
   .when('/signin', {
-    templateUrl: 'templates/signin.html',
+    templateUrl: 'app/auth/signin.html',
     controller: 'AuthCtrl'
   })
 
   .when('/signup', {
-    templateUrl: 'templates/signup.html',
+    templateUrl: 'app/auth/signup.html',
     controller: 'AuthCtrl'
   })
 
