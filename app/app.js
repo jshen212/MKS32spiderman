@@ -1,4 +1,4 @@
-var app = angular.module('app', [
+angular.module('brew', [
   'brew.auth',
   'brew.appts',
   'brew.map',
@@ -6,9 +6,9 @@ var app = angular.module('app', [
   'ngRoute',
   'ngAnimate',
   'ui.bootstrap.datetimepicker'
-]);
+])
 
-app.config(['$routeProvider', '$httpProvider', function($routeProvider){
+.config(['$routeProvider', '$httpProvider', function($routeProvider){
   $routeProvider
 
   .when('/home', {
