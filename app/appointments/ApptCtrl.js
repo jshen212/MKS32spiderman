@@ -1,6 +1,11 @@
 angular.module('brew.appts', [])
 .controller('ApptCtrl', ['$scope', '$http', '$location', '$window', function ($scope, $http, $location, $window) {
 
+  // authenticates by checking if there is a token
+  $scope.isAuth = function(){
+    return Boolean($window.localStorage.getItem('com.brewed'));
+  };
+
 // clears the hosting appointments and re-invokes appointment filter when host accepts a guest
   $scope.accepted = function(appt, guestEmail){
     $http.post('/acceptAppt', {time: appt.time, email: guestEmail }).success(function(res){
