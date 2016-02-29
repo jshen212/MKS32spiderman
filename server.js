@@ -142,13 +142,13 @@ app.post('/signin', function(req, res){
   var email = req.body.email;
   var password = req.body.password;
 
-  db.users.find({email:email}, function(err, exists){
+  db.users.find({email:email, password: password}, function(err, exists){
     if(!exists.length){
       res.send(false);
     }
 
     else {
-      var payload = { email: email };
+      var payload = { email: email, password: password};
       var secret = 'brewed';
 
       // encode token
