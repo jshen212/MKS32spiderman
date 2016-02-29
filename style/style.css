@@ -568,6 +568,11 @@ body {
   color: white;
   /*margin-left: -10px;*/
 }
+
+.acceptDenyButton {
+  width: 200px;
+  clear: both;
+}
 thead {
   width: 100%;
   padding-left: 0px;
