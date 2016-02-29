@@ -68,8 +68,10 @@
             <ul ng-repeat="guest in hostAppt.guests track by $index">
               <span>{{ guest }}
                 <br>
-                <button class="accept" ng-click="accepted(hostAppt, guest)">Yes</button>
-                <button class="deny" ng-click="denied(hostAppt, guest)">No</button>
+                <div class="acceptDenyButton">
+                  <button class="accept" ng-click="accepted(hostAppt, guest)">Yes</button>
+                  <button class="deny" ng-click="denied(hostAppt, guest)">No</button>
+                </div>
               </span>
             </ul>
           </td>
