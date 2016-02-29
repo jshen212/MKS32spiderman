@@ -64,7 +64,7 @@ body {
   width: 50%;
   margin: 20px auto;
   background-color: rgba(255, 255, 255, .7);
-  padding: 50px;
+  padding: 10px;
   border-radius: 30px;
 }
 
@@ -87,6 +87,8 @@ body {
   margin-top: 10px;
   background-color: #e74c3c;
   color: white;
+  max-width: 100px;
+  margin: auto;
 }
 .login-buttons:hover {
   color: white;
@@ -165,17 +167,20 @@ body {
 }
 
 .coffeeShopName {
+  float: left;
   margin-top: 2px;
   font-weight: 300;
-  font-size: 1.65em;
+  font-size: 1.2em;
+  width: 150px;
   /*letter-spacing: 1.5px;*/
 }
 
 .coffeeShopAddress {
-  /*float: left;*/
+  float: left;
   margin-top: -5px;
   line-height: normal;
   font-size: .8em;
+  width: 150px;
 }
 
 /***************** Appointments ********************/
@@ -366,7 +371,7 @@ body {
 }
 
 .day {
-  margin: 10px 10%;
+  margin: 10px 2%;
 }
 
 .submitButton {
@@ -570,4 +575,57 @@ thead {
 th {
   font-weight: 400;
   background-color: #EDEFED;
+}
+
+
+
+ /*MEDIA QUERIES FOR MOBILE */
+@media(max-width: 1000px) {
+  #map {
+    width: 100%;
+    height: 400px;
+    clear: both;
+    margin: auto;
+    margin-top: -10px;
+  }
+  .cafeList {
+    display: inline;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    box-shadow: none;
+    /*clear: both;*/
+    margin: auto;
+    margin-top:350px;
+    /*background-color: white;*/
+    overflow: visible;
+  }
+  .hostName {
+    font-size: 13px;
+  }
+  .hostDateTime {
+    font-size: 10px;
+  }
+  .appointmentsTable {
+    width: auto;
+    margin-top: 42px;
+  }
+  .appointmentsTableHeader {
+    margin-right: -5px;
+  }
+  /*.day {
+    margin-left: -30px;
+  }
+  .time {
+    margin-left: -30px;
+  }*/
+  .links {
+    width: 22%;
+    font-size: 12px;
+    padding: 0;
+    height: 30px;
+    vertical-align: middle;
+    padding-top: 6px;
+    float: left;
+  }
 }
