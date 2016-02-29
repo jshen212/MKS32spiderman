@@ -31,7 +31,8 @@ angular.module('brew.auth', [])
 
   // removes token when logout is clicked
   $scope.signout = function(){
-    $window.localStorage.removeItem('com.brewed');
-    $location.path('/home');
+    $window.localStorage.removeItem('com.brewed', function(){
+      $location.path('/home');
+    });
   };
 });
