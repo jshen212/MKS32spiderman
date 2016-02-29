@@ -1,11 +1,6 @@
 angular.module('brew.appts', [])
 .controller('ApptCtrl', ['$scope', '$http', '$location', '$window', function ($scope, $http, $location, $window) {
 
-  // authenticates by checking if there is a token
-  $scope.isAuth = function(){
-    return Boolean($window.localStorage.getItem('com.brewed'));
-  };
-
   // removes token when logout is clicked
   $scope.signout = function(){
     $window.localStorage.removeItem('com.brewed', function(){
