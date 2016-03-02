@@ -12,15 +12,15 @@ module.exports = function(app, express){
   app.use(express.static(__dirname + '/../../client'));
 
 
-  app.post('/denyAppt', bodyParser, apptController.denyAppt);
-  app.post('/acceptAppt', bodyParser, apptController.acceptAppt);
-  app.post('/sendJoinRequest', bodyParser, apptController.sendJoinRequest);
-  app.post('/getAppointments', bodyParser, apptController.getAppointments);
-  app.post('/createAppointment', bodyParser, apptController.createAppointment);
-  app.post('/filterAppointments', bodyParser, apptController.filterAppointments);
-  app.get('/fetchAppointmentsDashboardData', bodyParser, apptController.fetchAppointmentsDashboardData);
+  app.post('/denyAppt', bodyParser.json(), apptController.denyAppt);
+  app.post('/acceptAppt', bodyParser.json(), apptController.acceptAppt);
+  app.post('/sendJoinRequest', bodyParser.json(), apptController.sendJoinRequest);
+  app.post('/getAppointments', bodyParser.json(), apptController.getAppointments);
+  app.post('/createAppointment', bodyParser.json(), apptController.createAppointment);
+  app.post('/filterAppointments', bodyParser.json(), apptController.filterAppointments);
+  app.get('/fetchAppointmentsDashboardData', bodyParser.json(), apptController.fetchAppointmentsDashboardData);
 
-  app.post('/signup', bodyParser, userController.signup);
-  app.post('/signin', bodyParser, userController.postSignin);
-  app.get('/signin', bodyParser, userController.getSignin);
+  app.post('/signup', bodyParser.json(), userController.signup);
+  app.post('/signin', bodyParser.json(), userController.postSignin);
+  app.get('/signin', bodyParser.json(), userController.getSignin);
 };
