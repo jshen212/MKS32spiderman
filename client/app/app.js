@@ -11,29 +11,29 @@ var app = angular.module('app', [
 app.config(['$routeProvider', '$httpProvider', function($routeProvider){
   $routeProvider
 
-  .when('/home', {
-    templateUrl: 'templates/home.html',
+  .when('/', {
+    templateUrl: '../templates/home.html',
     controller: 'AuthCtrl'
   })
 
   .when('/appointments', {
-    templateUrl: 'templates/appointments.html',
+    templateUrl: '../templates/appointments.html',
     controller: 'ApptCtrl',
     authenticate: true
   })
 
   .when('/signin', {
-    templateUrl: 'templates/signin.html',
+    templateUrl: '../templates/signin.html',
     controller: 'AuthCtrl'
   })
 
   .when('/signup', {
-    templateUrl: 'templates/signup.html',
+    templateUrl: '../templates/signup.html',
     controller: 'AuthCtrl'
   })
 
   .otherwise({
-    redirectTo: '/home'
+    redirectTo: '/'
   });
 }])
 
