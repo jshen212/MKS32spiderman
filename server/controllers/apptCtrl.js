@@ -101,7 +101,7 @@ module.exports = {
       });
     }
 
-    // if guests array has items, loop throug hand check if user's email is in there
+    // if guests array has items, loop through and check if user's email is in there
     else {
       for(var i = 0; i < guestsArr.length; i++){
         // if user's email is in the guest array, respond with true
